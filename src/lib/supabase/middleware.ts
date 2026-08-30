@@ -35,11 +35,9 @@ export async function updateSession(request: NextRequest) {
     path.startsWith("/dashboard") ||
     path.startsWith("/assessment") ||
     path.startsWith("/safety-acknowledgment") ||
-    path.startsWith("/workouts") ||
-    path.startsWith("/nutrition") ||
-    path.startsWith("/bone-health") ||
     path.startsWith("/progress") ||
     path.startsWith("/settings") ||
+    path.startsWith("/community") ||
     path.startsWith("/admin");
 
   if (!user && isAppRoute) {
