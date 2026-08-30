@@ -5,6 +5,7 @@ import { Clock, Dumbbell, ChevronLeft, Info } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { getAllExercises } from "@/lib/content";
+import { ExerciseIllustration } from "@/components/exercise-illustration";
 import type { WorkoutTemplate, Exercise } from "@/lib/types";
 
 import templatesData from "../../../../../content/workout-templates.json";
@@ -80,9 +81,12 @@ export default async function WorkoutDetailPage({
           <Card key={exercise.id}>
             <CardContent className="py-4">
               <div className="flex items-start gap-3">
-                <span className="text-lg font-bold text-muted-foreground/50 mt-0.5 w-6 text-center">
-                  {index + 1}
-                </span>
+                <div className="flex flex-col items-center gap-1 shrink-0">
+                  <span className="text-xs font-bold text-muted-foreground/50">
+                    {index + 1}
+                  </span>
+                  <ExerciseIllustration exerciseId={exercise.id} movementPattern={exercise.movement_pattern} size="md" />
+                </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-sm">{exercise.name}</h3>
                   <p className="text-xs text-muted-foreground mt-0.5">
