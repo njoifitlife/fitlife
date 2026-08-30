@@ -1,5 +1,13 @@
-export type SubscriptionTier = "free" | "essential" | "complete" | "coaching";
-export type SubscriptionStatus = "active" | "canceled" | "past_due" | "trialing" | null;
+export type BillingInterval = "month" | "year";
+export type SubscriptionStatus =
+  | "active"
+  | "canceled"
+  | "past_due"
+  | "incomplete"
+  | "incomplete_expired"
+  | "trialing"
+  | "unpaid"
+  | "paused";
 
 export type ActivityLevel = "sedentary" | "lightly_active" | "moderately_active" | "very_active";
 export type FitnessLevel = "beginner" | "intermediate" | "advanced";
@@ -34,12 +42,24 @@ export interface User {
   id: string;
   email: string;
   is_admin: boolean;
-  subscription_tier: SubscriptionTier;
+  display_name: string | null;
   stripe_customer_id: string | null;
-  stripe_subscription_id: string | null;
-  subscription_status: SubscriptionStatus;
   created_at: string;
   last_active_at: string;
+}
+
+export interface Subscription {
+  id: string;
+  user_id: string;
+  stripe_customer_id: string;
+  stripe_subscription_id: string;
+  stripe_price_id: string;
+  status: SubscriptionStatus;
+  current_period_start: string | null;
+  current_period_end: string | null;
+  cancel_at_period_end: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Assessment {
@@ -219,13 +239,4 @@ export interface Challenge {
   reward_badge: string;
 }
 
-// Pricing tiers
-export interface PricingTier {
-  id: SubscriptionTier;
-  name: string;
-  price: number;
-  interval: "month";
-  features: string[];
-  stripe_price_id: string;
-  popular?: boolean;
-}
+export type PlanChoice = "monthly" | "annual";

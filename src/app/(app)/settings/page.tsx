@@ -6,14 +6,10 @@ import { User, CreditCard, LogOut } from "lucide-react";
 import { signOut } from "@/lib/actions/auth";
 import { ProfileForm } from "@/components/profile-form";
 import { ManageSubscriptionButton } from "@/components/manage-subscription-button";
+import { getSubscription } from "@/lib/entitlement";
 import Link from "next/link";
 
-const TIER_LABELS: Record<string, string> = {
-  free: "Free",
-  essential: "Essential",
-  complete: "Complete",
-  coaching: "Coaching",
-};
+const ACTIVE_STATUSES = new Set(["active", "trialing"]);
 
 export default async function SettingsPage() {
   const supabase = await createClient();
@@ -24,12 +20,26 @@ export default async function SettingsPage() {
 
   const { data: profile } = await supabase
     .from("users")
-    .select("display_name, email, subscription_tier, subscription_status, stripe_customer_id")
+    .select("display_name, email, stripe_customer_id")
     .eq("id", user.id)
     .single();
 
-  const tier = profile?.subscription_tier || "free";
-  const hasStripe = !!profile?.stripe_customer_id;
+  const subscription = await getSubscription(supabase, user.id);
+
+  const isActive = subscription && ACTIVE_STATUSES.has(subscription.status);
+  const hasStripeCustomer = !!profile?.stripe_customer_id;
+
+  const monthlyPriceId = process.env.STRIPE_MONTHLY_PRICE_ID || "";
+  const billingLabel =
+    subscription?.stripe_price_id === monthlyPriceId ? "Monthly" : "Annual";
+
+  const periodEnd = subscription?.current_period_end
+    ? new Date(subscription.current_period_end).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    : null;
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6">
@@ -57,36 +67,55 @@ export default async function SettingsPage() {
         </CardContent>
       </Card>
 
-      {/* Subscription */}
+      {/* Membership */}
       <Card className="mb-4">
         <CardHeader className="pb-3">
           <CardTitle className="text-base flex items-center gap-2">
             <CreditCard className="h-4 w-4 text-primary" />
-            Subscription
+            Membership
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium">
-                {TIER_LABELS[tier]} Plan
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {profile?.subscription_status === "active"
-                  ? "Active"
-                  : tier === "free"
-                    ? "No active subscription"
-                    : profile?.subscription_status || "Inactive"}
-              </p>
+          {isActive ? (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium">
+                    NjoiFitLife Membership
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {billingLabel} &middot; Active
+                  </p>
+                </div>
+                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                  Active
+                </span>
+              </div>
+              {subscription.cancel_at_period_end && periodEnd && (
+                <p className="text-xs text-muted-foreground">
+                  Cancels at end of period ({periodEnd})
+                </p>
+              )}
+              {!subscription.cancel_at_period_end && periodEnd && (
+                <p className="text-xs text-muted-foreground">
+                  Renews {periodEnd}
+                </p>
+              )}
+              {hasStripeCustomer && <ManageSubscriptionButton />}
             </div>
-            {hasStripe ? (
-              <ManageSubscriptionButton />
-            ) : (
+          ) : (
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium">No active membership</p>
+                <p className="text-xs text-muted-foreground">
+                  Subscribe to unlock your full experience
+                </p>
+              </div>
               <Link href="/pricing">
-                <Button size="sm">Upgrade</Button>
+                <Button size="sm">Subscribe</Button>
               </Link>
-            )}
-          </div>
+            </div>
+          )}
         </CardContent>
       </Card>
 
@@ -94,11 +123,7 @@ export default async function SettingsPage() {
       <Card>
         <CardContent className="py-4">
           <form action={signOut}>
-            <Button
-              variant="outline"
-              className="w-full"
-              type="submit"
-            >
+            <Button variant="outline" className="w-full" type="submit">
               <LogOut className="h-4 w-4 mr-2" />
               Sign out
             </Button>

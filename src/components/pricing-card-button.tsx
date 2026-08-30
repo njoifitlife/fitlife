@@ -4,33 +4,27 @@ import { useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { createCheckoutSession } from "@/lib/actions/checkout";
-import type { SubscriptionTier } from "@/lib/types";
+import type { PlanChoice } from "@/lib/types";
 
 export function PricingCardButton({
-  tierId,
-  popular,
-  hasPrice,
+  plan,
+  variant = "default",
 }: {
-  tierId: SubscriptionTier;
-  popular?: boolean;
-  hasPrice: boolean;
+  plan: PlanChoice;
+  variant?: "default" | "outline";
 }) {
   const [isPending, startTransition] = useTransition();
-
-  if (!hasPrice) {
-    return (
-      <Button className="w-full" variant={popular ? "default" : "outline"} disabled>
-        Coming soon
-      </Button>
-    );
-  }
 
   return (
     <Button
       className="w-full"
-      variant={popular ? "default" : "outline"}
+      variant={variant}
       disabled={isPending}
-      onClick={() => startTransition(async () => { await createCheckoutSession(tierId); })}
+      onClick={() =>
+        startTransition(async () => {
+          await createCheckoutSession(plan);
+        })
+      }
     >
       {isPending ? (
         <Loader2 className="h-4 w-4 animate-spin mr-2" />

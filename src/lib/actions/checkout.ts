@@ -2,20 +2,23 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { stripe, PRICING_TIERS } from "@/lib/stripe";
-import type { SubscriptionTier } from "@/lib/types";
+import { stripe, getStripePriceId } from "@/lib/stripe";
+import type { PlanChoice } from "@/lib/types";
 
-export async function createCheckoutSession(tierId: SubscriptionTier) {
+const VALID_PLANS = new Set<PlanChoice>(["monthly", "annual"]);
+
+export async function createCheckoutSession(plan: PlanChoice) {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const tier = PRICING_TIERS.find((t) => t.id === tierId);
-  if (!tier || !tier.stripe_price_id) {
-    return { error: "This plan is not available yet." };
+  if (!VALID_PLANS.has(plan)) {
+    return { error: "Invalid plan selection." };
   }
+
+  const priceId = getStripePriceId(plan);
 
   const { data: profile } = await supabase
     .from("users")
@@ -37,15 +40,18 @@ export async function createCheckoutSession(tierId: SubscriptionTier) {
       .eq("id", user.id);
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
   const session = await stripe.checkout.sessions.create({
     customer: customerId,
     mode: "subscription",
-    line_items: [{ price: tier.stripe_price_id, quantity: 1 }],
+    line_items: [{ price: priceId, quantity: 1 }],
     success_url: `${baseUrl}/dashboard?checkout=success`,
     cancel_url: `${baseUrl}/pricing`,
-    metadata: { supabase_user_id: user.id, tier: tierId },
+    subscription_data: {
+      metadata: { supabase_user_id: user.id },
+    },
+    metadata: { supabase_user_id: user.id },
   });
 
   if (session.url) {
@@ -72,7 +78,7 @@ export async function createBillingPortalSession() {
     return { error: "No subscription found." };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
   const session = await stripe.billingPortal.sessions.create({
     customer: profile.stripe_customer_id,

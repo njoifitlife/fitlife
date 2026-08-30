@@ -159,11 +159,13 @@ export default function LandingPage() {
       <section className="py-20 bg-card">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-3">
-            Plans starting at $19.99/month
+            One membership. Full access.
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-            Choose the level of support that fits your goals. All plans include
-            a personalized workout program.
+          <p className="text-muted-foreground mb-2 max-w-md mx-auto">
+            $14.99/month or $119/year (best value).
+          </p>
+          <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
+            Same features, same support — choose the billing that works for you.
           </p>
           <Link href="/pricing">
             <Button size="lg">See pricing</Button>
