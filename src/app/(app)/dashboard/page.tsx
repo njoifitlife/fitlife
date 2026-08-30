@@ -3,8 +3,24 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dumbbell, Apple, Bone, TrendingUp, ChevronRight, Trophy, Users, Settings } from "lucide-react";
+import {
+  Dumbbell, Apple, Bone, TrendingUp, ChevronRight,
+  Trophy, Users, Settings, Sparkles, Moon, Sunrise, Sun,
+} from "lucide-react";
 import { GeneratePlanButton } from "@/components/generate-plan-button";
+import type { WorkoutDay } from "@/lib/types";
+
+function getGreeting() {
+  const hour = new Date().getUTCHours();
+  if (hour < 12) return { text: "Good morning", Icon: Sunrise };
+  if (hour < 17) return { text: "Good afternoon", Icon: Sun };
+  return { text: "Good evening", Icon: Moon };
+}
+
+function getTodayDayNumber() {
+  const jsDay = new Date().getDay();
+  return jsDay === 0 ? 7 : jsDay;
+}
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -81,7 +97,9 @@ export default async function DashboardPage() {
   if (!hasPlan) {
     return (
       <div className="max-w-lg mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-2">Your plan is ready to generate</h1>
+        <h1 className="text-2xl font-bold mb-2">
+          Your plan is ready to generate
+        </h1>
         <p className="text-muted-foreground mb-6">
           Based on your assessment, we&apos;ll create a personalized 4-week
           workout and nutrition plan.
@@ -91,18 +109,62 @@ export default async function DashboardPage() {
     );
   }
 
+  const todayNum = getTodayDayNumber();
+  const { data: todayDay } = await supabase
+    .from("workout_days")
+    .select("*")
+    .eq("fitness_plan_id", plan.id)
+    .eq("week_number", plan.current_week)
+    .eq("day_number", todayNum)
+    .single();
+
+  const today = todayDay as WorkoutDay | null;
+  const isWorkoutDay = today?.day_type === "workout";
+  const isRest = today?.day_type === "rest";
+  const exerciseCount = today?.exercises?.length || 0;
+
+  const todayLink = isWorkoutDay && today
+    ? `/workouts/my-plan/${today.id}`
+    : "/workouts/my-plan";
+
+  const todaySubtext = isWorkoutDay
+    ? `${exerciseCount} exercises — let's go!`
+    : isRest
+      ? "Rest day — you've earned it"
+      : today?.day_type === "active_recovery"
+        ? "Active recovery — light movement today"
+        : "See your weekly plan";
+
+  const greeting = getGreeting();
+
   return (
     <div className="max-w-lg mx-auto px-4 py-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Good morning</h1>
+        <h1 className="text-2xl font-bold flex items-center gap-2">
+          {greeting.text}
+          <greeting.Icon className="h-5 w-5 text-accent" />
+        </h1>
         <p className="text-muted-foreground">
           Week {plan.current_week} of {plan.program_length_weeks}
         </p>
       </div>
 
+      {/* Daily Motivation */}
+      <Card className="mb-4 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/10">
+        <CardContent className="py-4">
+          <div className="flex items-start gap-3">
+            <Sparkles className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+            <p className="text-sm font-medium text-foreground">
+              Every workout is an investment in your future self. You&apos;re
+              building strength that lasts a lifetime.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="space-y-4">
         {/* Today's Workout */}
-        <Link href="/workouts">
+        <Link href={todayLink}>
           <Card className="hover:shadow-md transition-shadow">
             <CardContent className="flex items-center gap-4 py-5">
               <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
@@ -110,9 +172,7 @@ export default async function DashboardPage() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-semibold">Today&apos;s Workout</p>
-                <p className="text-sm text-muted-foreground">
-                  Tap to see your exercises for today
-                </p>
+                <p className="text-sm text-muted-foreground">{todaySubtext}</p>
               </div>
               <ChevronRight className="h-5 w-5 text-muted-foreground shrink-0" />
             </CardContent>
@@ -141,7 +201,7 @@ export default async function DashboardPage() {
         <Link href="/bone-health">
           <Card className="hover:shadow-md transition-shadow">
             <CardContent className="flex items-center gap-4 py-5">
-              <div className="h-12 w-12 rounded-xl bg-success/10 flex items-center justify-center text-success shrink-0">
+              <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
                 <Bone className="h-6 w-6" />
               </div>
               <div className="flex-1 min-w-0">
@@ -159,7 +219,7 @@ export default async function DashboardPage() {
         <Link href="/challenges">
           <Card className="hover:shadow-md transition-shadow">
             <CardContent className="flex items-center gap-4 py-5">
-              <div className="h-12 w-12 rounded-xl bg-warning/10 flex items-center justify-center text-warning shrink-0">
+              <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
                 <Trophy className="h-6 w-6" />
               </div>
               <div className="flex-1 min-w-0">
@@ -192,34 +252,36 @@ export default async function DashboardPage() {
         </Link>
 
         {/* Progress */}
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-base flex items-center gap-2">
-              <TrendingUp className="h-4 w-4 text-primary" />
-              Your Progress
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="text-center">
-                <p className="text-3xl font-bold text-primary">
-                  {completionCount || 0}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Exercises completed
-                </p>
+        <Link href="/progress">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 text-primary" />
+                Your Progress
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-primary">
+                    {completionCount || 0}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Exercises completed
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-primary">
+                    {plan.current_week}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Current week
+                  </p>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-primary">
-                  {plan.current_week}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Current week
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </Link>
 
         {/* Profile / Settings */}
         <Link href="/settings">

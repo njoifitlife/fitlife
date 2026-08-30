@@ -129,8 +129,34 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing preview */}
+      {/* Testimonials */}
       <section className="py-20 bg-background">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-14">
+            What our members say
+          </h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            <TestimonialCard
+              quote="I haven't felt this strong since my 30s. The modifications made it possible to start where I was, and the progression kept me challenged."
+              name="Sarah M."
+              detail="Age 47, 12 weeks in"
+            />
+            <TestimonialCard
+              quote="Finally a program that understands my body. The bone health focus and joint-friendly options make all the difference."
+              name="Jennifer R."
+              detail="Age 52, 8 weeks in"
+            />
+            <TestimonialCard
+              quote="The 10-minute workouts on busy days kept my streak alive. I've never been this consistent with any fitness program."
+              name="Angela T."
+              detail="Age 43, 16 weeks in"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing preview */}
+      <section className="py-20 bg-card">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-3">
             Plans starting at $19.99/month
@@ -207,5 +233,34 @@ function Step({
         {description}
       </p>
     </div>
+  );
+}
+
+function TestimonialCard({
+  quote,
+  name,
+  detail,
+}: {
+  quote: string;
+  name: string;
+  detail: string;
+}) {
+  return (
+    <Card>
+      <CardContent className="pt-6">
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4 italic">
+          &ldquo;{quote}&rdquo;
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
+            {name[0]}
+          </div>
+          <div>
+            <p className="text-sm font-semibold">{name}</p>
+            <p className="text-xs text-muted-foreground">{detail}</p>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
