@@ -1,17 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { PRICING_TIERS } from "@/lib/stripe";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { PricingCardButton } from "@/components/pricing-card-button";
 
 export default function PricingPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       <div className="text-center mb-10">
-        <h1 className="text-3xl font-bold mb-3">
-          Choose your plan
-        </h1>
+        <h1 className="text-3xl font-bold mb-3">Choose your plan</h1>
         <p className="text-muted-foreground max-w-md mx-auto">
           All plans include a personalized workout program built from your
           assessment. Cancel anytime.
@@ -47,19 +44,16 @@ export default function PricingPage() {
               <ul className="space-y-3 mb-6">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm">
-                    <Check className="h-4 w-4 text-success shrink-0 mt-0.5" />
+                    <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
-              <Link href="/signup">
-                <Button
-                  className="w-full"
-                  variant={tier.popular ? "default" : "outline"}
-                >
-                  Get started
-                </Button>
-              </Link>
+              <PricingCardButton
+                tierId={tier.id}
+                popular={tier.popular}
+                hasPrice={!!tier.stripe_price_id}
+              />
             </CardContent>
           </Card>
         ))}

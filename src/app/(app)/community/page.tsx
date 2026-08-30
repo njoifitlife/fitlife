@@ -1,9 +1,9 @@
-"use client";
-
-import { useState } from "react";
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Heart, MessageCircle, Send, Sparkles, Trophy, TrendingUp } from "lucide-react";
+import { Sparkles, Trophy, TrendingUp, MessageCircle } from "lucide-react";
+import { CommunityPostForm } from "@/components/community-post-form";
+import { CommunityLikeButton } from "@/components/community-like-button";
 import { cn } from "@/lib/utils";
 
 const MOTIVATION_QUOTES = [
@@ -24,49 +24,6 @@ const POST_TABS: { label: string; value: PostType | "all" }[] = [
   { label: "Questions", value: "question" },
 ];
 
-const PLACEHOLDER_POSTS = [
-  {
-    id: "1",
-    name: "Sarah M.",
-    type: "milestone" as PostType,
-    content: "Just completed my first 7-Day Movement Kickstart challenge! Feeling so accomplished. This is the longest I've stuck with a fitness program.",
-    time: "2 hours ago",
-    likes: 12,
-  },
-  {
-    id: "2",
-    name: "Lisa K.",
-    type: "motivation" as PostType,
-    content: "Reminder: you don't have to be great to start, but you have to start to be great. Here's to showing up for ourselves!",
-    time: "4 hours ago",
-    likes: 24,
-  },
-  {
-    id: "3",
-    name: "Jennifer R.",
-    type: "progress" as PostType,
-    content: "Week 3 of my personalized plan and I just did my first full push-up from the floor! Started with wall push-ups 3 weeks ago. The progression works!",
-    time: "6 hours ago",
-    likes: 31,
-  },
-  {
-    id: "4",
-    name: "Maria C.",
-    type: "question" as PostType,
-    content: "Has anyone tried the 30-min Low-Impact Strength workout? How does it compare to the beginner full body one?",
-    time: "8 hours ago",
-    likes: 5,
-  },
-  {
-    id: "5",
-    name: "Angela T.",
-    type: "milestone" as PostType,
-    content: "14-day streak!! I've never been this consistent. The short 10-minute workouts on busy days make all the difference.",
-    time: "1 day ago",
-    likes: 18,
-  },
-];
-
 const TYPE_ICONS: Record<PostType, typeof Sparkles> = {
   motivation: Sparkles,
   milestone: Trophy,
@@ -74,27 +31,63 @@ const TYPE_ICONS: Record<PostType, typeof Sparkles> = {
   question: MessageCircle,
 };
 
-export default function CommunityPage() {
-  const [activeTab, setActiveTab] = useState<PostType | "all">("all");
-  const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
+function timeAgo(dateStr: string) {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  const days = Math.floor(hrs / 24);
+  return `${days}d ago`;
+}
 
-  const quote =
-    MOTIVATION_QUOTES[Math.floor(Math.random() * MOTIVATION_QUOTES.length)];
+export default async function CommunityPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ filter?: string }>;
+}) {
+  const { filter } = await searchParams;
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect("/login");
 
-  const filteredPosts =
-    activeTab === "all"
-      ? PLACEHOLDER_POSTS
-      : PLACEHOLDER_POSTS.filter((p) => p.type === activeTab);
+  const { data: profile } = await supabase
+    .from("users")
+    .select("display_name, email")
+    .eq("id", user.id)
+    .single();
 
-  const toggleLike = (postId: string) => {
-    const next = new Set(likedPosts);
-    if (next.has(postId)) {
-      next.delete(postId);
-    } else {
-      next.add(postId);
-    }
-    setLikedPosts(next);
-  };
+  const userInitial = (
+    profile?.display_name?.[0] ||
+    profile?.email?.[0] ||
+    "Y"
+  ).toUpperCase();
+
+  let query = supabase
+    .from("community_posts")
+    .select("*, users!inner(display_name, email)")
+    .order("created_at", { ascending: false })
+    .limit(30);
+
+  const activeTab = filter || "all";
+  if (activeTab !== "all") {
+    query = query.eq("post_type", activeTab);
+  }
+
+  const { data: posts } = await query;
+
+  const { data: userLikes } = await supabase
+    .from("community_likes")
+    .select("post_id")
+    .eq("user_id", user.id);
+
+  const likedPostIds = new Set((userLikes || []).map((l) => l.post_id));
+
+  const quoteIndex =
+    new Date().getDate() % MOTIVATION_QUOTES.length;
+  const quote = MOTIVATION_QUOTES[quoteIndex];
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6">
@@ -105,6 +98,7 @@ export default function CommunityPage() {
         </p>
       </div>
 
+      {/* Daily Motivation */}
       <Card className="mb-6 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/10">
         <CardContent className="py-5">
           <div className="flex items-start gap-3">
@@ -119,30 +113,15 @@ export default function CommunityPage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-6">
-        <CardContent className="py-4">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
-              Y
-            </div>
-            <div className="flex-1">
-              <p className="text-sm text-muted-foreground">
-                Share a win, milestone, or question...
-              </p>
-            </div>
-            <Button size="sm" variant="outline">
-              <Send className="h-3.5 w-3.5 mr-1" />
-              Post
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Post Composer */}
+      <CommunityPostForm userInitial={userInitial} />
 
+      {/* Filter Tabs */}
       <div className="flex gap-2 mb-4 overflow-x-auto pb-1">
         {POST_TABS.map((tab) => (
-          <button
+          <a
             key={tab.value}
-            onClick={() => setActiveTab(tab.value)}
+            href={tab.value === "all" ? "/community" : `/community?filter=${tab.value}`}
             className={cn(
               "px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors",
               activeTab === tab.value
@@ -151,47 +130,52 @@ export default function CommunityPage() {
             )}
           >
             {tab.label}
-          </button>
+          </a>
         ))}
       </div>
 
+      {/* Feed */}
       <div className="space-y-3">
-        {filteredPosts.map((post) => {
-          const Icon = TYPE_ICONS[post.type];
+        {(!posts || posts.length === 0) && (
+          <Card>
+            <CardContent className="py-8 text-center">
+              <p className="text-sm text-muted-foreground">
+                No posts yet. Be the first to share!
+              </p>
+            </CardContent>
+          </Card>
+        )}
+        {(posts || []).map((post) => {
+          const Icon = TYPE_ICONS[post.post_type as PostType] || Sparkles;
+          const author = post.users as { display_name: string | null; email: string };
+          const authorName =
+            author.display_name ||
+            author.email.split("@")[0].slice(0, 8) + ".";
+
           return (
             <Card key={post.id}>
               <CardContent className="py-4">
                 <div className="flex items-start gap-3">
                   <div className="h-9 w-9 rounded-full bg-accent/10 flex items-center justify-center text-accent text-sm font-bold shrink-0">
-                    {post.name[0]}
+                    {authorName[0].toUpperCase()}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold">{post.name}</span>
+                      <span className="text-sm font-semibold">
+                        {authorName}
+                      </span>
                       <Icon className="h-3 w-3 text-muted-foreground" />
                       <span className="text-xs text-muted-foreground">
-                        {post.time}
+                        {timeAgo(post.created_at)}
                       </span>
                     </div>
                     <p className="text-sm mt-1.5">{post.content}</p>
-                    <div className="flex items-center gap-4 mt-3">
-                      <button
-                        onClick={() => toggleLike(post.id)}
-                        className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Heart
-                          className={cn(
-                            "h-3.5 w-3.5",
-                            likedPosts.has(post.id) &&
-                              "fill-primary text-primary"
-                          )}
-                        />
-                        {post.likes + (likedPosts.has(post.id) ? 1 : 0)}
-                      </button>
-                      <button className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors">
-                        <MessageCircle className="h-3.5 w-3.5" />
-                        Reply
-                      </button>
+                    <div className="mt-3">
+                      <CommunityLikeButton
+                        postId={post.id}
+                        likesCount={post.likes_count}
+                        isLiked={likedPostIds.has(post.id)}
+                      />
                     </div>
                   </div>
                 </div>

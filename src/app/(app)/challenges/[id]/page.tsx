@@ -1,39 +1,51 @@
-"use client";
-
-import { useState } from "react";
-import { notFound } from "next/navigation";
-import { use } from "react";
+import { notFound, redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, Trophy, Calendar, Check, Circle } from "lucide-react";
+import { ChevronLeft, Trophy, Calendar } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import type { Challenge } from "@/lib/types";
+import { ChallengeEnrollButton } from "@/components/challenge-enroll-button";
+import { ChallengeDayToggle } from "@/components/challenge-day-toggle";
 
 import challengesData from "../../../../../content/challenges.json";
 const challenges = challengesData as Challenge[];
 
-export default function ChallengeDetailPage({
+export function generateStaticParams() {
+  return challenges.map((c) => ({ id: c.id }));
+}
+
+export default async function ChallengeDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = use(params);
+  const { id } = await params;
   const challenge = challenges.find((c) => c.id === id);
   if (!challenge) notFound();
 
-  const [completedDays, setCompletedDays] = useState<Set<number>>(new Set());
-  const [enrolled, setEnrolled] = useState(false);
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect("/login");
 
-  const toggleDay = (day: number) => {
-    const next = new Set(completedDays);
-    if (next.has(day)) {
-      next.delete(day);
-    } else {
-      next.add(day);
-    }
-    setCompletedDays(next);
-  };
+  const { data: enrollment } = await supabase
+    .from("challenge_enrollments")
+    .select("id")
+    .eq("user_id", user.id)
+    .eq("challenge_id", id)
+    .single();
+
+  let completedDays = new Set<number>();
+
+  if (enrollment) {
+    const { data: completions } = await supabase
+      .from("challenge_completions")
+      .select("day_number")
+      .eq("enrollment_id", enrollment.id);
+
+    completedDays = new Set((completions || []).map((c) => c.day_number));
+  }
 
   const progress =
     challenge.daily_tasks.length > 0
@@ -51,9 +63,7 @@ export default function ChallengeDetailPage({
       </Link>
 
       <div className="text-center mb-6">
-        <div className="text-5xl mb-3">
-          <Trophy className="h-12 w-12 text-warning mx-auto" />
-        </div>
+        <Trophy className="h-12 w-12 text-accent mx-auto mb-3" />
         <h1 className="text-2xl font-bold">{challenge.name}</h1>
         <p className="text-muted-foreground text-sm mt-2 max-w-md mx-auto">
           {challenge.description}
@@ -69,20 +79,19 @@ export default function ChallengeDetailPage({
         </div>
       </div>
 
-      {!enrolled ? (
+      {!enrollment ? (
         <Card className="mb-6">
           <CardContent className="py-6 text-center">
             <p className="text-sm text-muted-foreground mb-4">
               Ready to take on this challenge? Join now and start tracking your
               daily progress.
             </p>
-            <Button onClick={() => setEnrolled(true)} size="lg">
-              Join Challenge
-            </Button>
+            <ChallengeEnrollButton challengeId={id} />
           </CardContent>
         </Card>
       ) : (
         <>
+          {/* Progress bar */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium">Your Progress</span>
@@ -98,39 +107,26 @@ export default function ChallengeDetailPage({
             </div>
           </div>
 
+          {progress === 100 && (
+            <Card className="mb-6 bg-primary/10 border-primary/20">
+              <CardContent className="py-4 text-center">
+                <p className="font-semibold text-sm">
+                  Challenge complete! You earned the &ldquo;{challenge.reward_badge}&rdquo; badge!
+                </p>
+              </CardContent>
+            </Card>
+          )}
+
           <div className="space-y-2">
             {challenge.daily_tasks.map((task, index) => (
-              <button
+              <ChallengeDayToggle
                 key={index}
-                onClick={() => toggleDay(index)}
-                className="w-full text-left"
-              >
-                <Card
-                  className={cn(
-                    "transition-colors",
-                    completedDays.has(index) && "bg-success/5 border-success/20"
-                  )}
-                >
-                  <CardContent className="py-3 flex items-start gap-3">
-                    {completedDays.has(index) ? (
-                      <div className="h-5 w-5 rounded-full bg-success flex items-center justify-center shrink-0 mt-0.5">
-                        <Check className="h-3 w-3 text-white" />
-                      </div>
-                    ) : (
-                      <Circle className="h-5 w-5 text-muted-foreground/30 shrink-0 mt-0.5" />
-                    )}
-                    <span
-                      className={cn(
-                        "text-sm",
-                        completedDays.has(index) &&
-                          "line-through text-muted-foreground"
-                      )}
-                    >
-                      {task}
-                    </span>
-                  </CardContent>
-                </Card>
-              </button>
+                enrollmentId={enrollment.id}
+                challengeId={id}
+                dayIndex={index}
+                task={task.replace(/^Day \d+:\s*/, "")}
+                isCompleted={completedDays.has(index)}
+              />
             ))}
           </div>
         </>
