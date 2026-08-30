@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife — Fitness Coaching for Women 40+</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="logo" data-page="home">FitLife</a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="main-nav">
+                <a href="#" data-page="home" class="active">Home</a>
+                <a href="#" data-page="workouts">Workouts</a>
+                <a href="#" data-page="nutrition">Nutrition</a>
+                <a href="#" data-page="tracker">My Tracker</a>
+                <a href="#" data-page="wellness">Wellness</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Your Strongest Chapter<br>Starts Now</h1>
+                    <p>Expert-guided fitness coaching designed specifically for women over 40. Build strength, boost energy, and feel your best — at your own pace.</p>
+                    <a href="#" class="btn btn-primary" data-page="workouts">Explore Workouts</a>
+                </div>
+            </div>
+
+            <div class="container">
+                <section class="features">
+                    <h2>Why FitLife Works</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#x1F4AA;</div>
+                            <h3>Strength Building</h3>
+                            <p>Resistance training programs that support bone density and lean muscle — essential after 40.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#x1F9D8;</div>
+                            <h3>Joint-Friendly</h3>
+                            <p>Every workout includes low-impact alternatives so you can train hard without the wear and tear.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#x2764;&#xFE0F;</div>
+                            <h3>Hormone-Aware</h3>
+                            <p>Workouts and nutrition tips that account for perimenopause, menopause, and hormonal shifts.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#x1F4CA;</div>
+                            <h3>Track Progress</h3>
+                            <p>Log your workouts, see your streaks, and celebrate every milestone along the way.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="testimonials">
+                    <h2>What Our Members Say</h2>
+                    <div class="testimonial-grid">
+                        <blockquote class="testimonial-card">
+                            <p>"I started FitLife at 47 thinking I was too old to get strong. Six months later I did my first real push-up. This program changed everything."</p>
+                            <cite>— Sarah, 48</cite>
+                        </blockquote>
+                        <blockquote class="testimonial-card">
+                            <p>"The joint-friendly options let me keep training even on tough days. I feel more energetic than I did in my 30s."</p>
+                            <cite>— Maria, 52</cite>
+                        </blockquote>
+                        <blockquote class="testimonial-card">
+                            <p>"Finally a program that understands what my body is going through. The menopause nutrition guide alone was worth it."</p>
+                            <cite>— Diane, 44</cite>
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section class="cta-section">
+                    <h2>Ready to Start?</h2>
+                    <p>Choose your fitness level and begin your journey today. No equipment needed for beginner workouts.</p>
+                    <a href="#" class="btn btn-primary" data-page="workouts">View Workout Plans</a>
+                </section>
+            </div>
+        </section>
+
+        <!-- WORKOUTS PAGE -->
+        <section id="page-workouts" class="page">
+            <div class="container">
+                <h1>Workout Plans</h1>
+                <p class="page-intro">Choose your level. Every plan is designed for women over 40, with modifications for joints, energy levels, and time constraints.</p>
+
+                <div class="level-tabs">
+                    <button class="tab-btn active" data-level="beginner">Beginner</button>
+                    <button class="tab-btn" data-level="intermediate">Intermediate</button>
+                    <button class="tab-btn" data-level="advanced">Advanced</button>
+                </div>
+
+                <!-- BEGINNER -->
+                <div class="workout-level active" id="level-beginner">
+                    <h2>Beginner — Building Your Foundation</h2>
+                    <p>3 days per week, 20-30 minutes. No equipment needed.</p>
+
+                    <div class="workout-card">
+                        <h3>Day 1 — Lower Body Strength</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Bodyweight Squats</span>
+                                <span class="exercise-detail">3 sets x 10 reps</span>
+                                <p class="exercise-note">Stand with feet shoulder-width apart. Lower hips back and down as if sitting in a chair. Keep chest up. <strong>Modification:</strong> Use a chair behind you for support.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Glute Bridges</span>
+                                <span class="exercise-detail">3 sets x 12 reps</span>
+                                <p class="exercise-note">Lie on your back, knees bent, feet flat. Push hips up, squeezing glutes at the top. Great for lower back and hip strength.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Standing Calf Raises</span>
+                                <span class="exercise-detail">3 sets x 15 reps</span>
+                                <p class="exercise-note">Rise up on your toes, hold for a second, then lower. Hold a wall for balance if needed.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Wall Sit</span>
+                                <span class="exercise-detail">3 sets x 20 seconds</span>
+                                <p class="exercise-note">Lean against a wall with thighs parallel to the floor. Build up duration over time.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 2 — Upper Body &amp; Core</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Wall Push-Ups</span>
+                                <span class="exercise-detail">3 sets x 10 reps</span>
+                                <p class="exercise-note">Stand arm's length from a wall. Place hands on wall and push. Progress to incline push-ups on a counter as you get stronger.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Seated Arm Circles</span>
+                                <span class="exercise-detail">3 sets x 30 seconds</span>
+                                <p class="exercise-note">Extend arms to the side, make small circles. Great for shoulder mobility and warming up joints.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Dead Bug</span>
+                                <span class="exercise-detail">3 sets x 8 reps each side</span>
+                                <p class="exercise-note">Lie on your back, arms up, knees at 90 degrees. Lower opposite arm and leg while keeping your back flat on the floor.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Bird Dog</span>
+                                <span class="exercise-detail">3 sets x 8 reps each side</span>
+                                <p class="exercise-note">On hands and knees, extend opposite arm and leg. Builds core stability and balance.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 3 — Full Body &amp; Flexibility</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">March in Place</span>
+                                <span class="exercise-detail">3 minutes warm-up</span>
+                                <p class="exercise-note">Lift knees high, pump arms. Gets the heart rate up gently.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Step-Ups</span>
+                                <span class="exercise-detail">3 sets x 8 reps each leg</span>
+                                <p class="exercise-note">Use a sturdy step or the bottom stair. Hold a railing for balance.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Standing Side Leg Lifts</span>
+                                <span class="exercise-detail">3 sets x 10 reps each side</span>
+                                <p class="exercise-note">Hold a chair for balance. Lift one leg out to the side. Strengthens hips and improves balance.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Gentle Stretching Routine</span>
+                                <span class="exercise-detail">10 minutes</span>
+                                <p class="exercise-note">Neck rolls, shoulder stretches, hamstring stretch, hip flexor stretch, calf stretch. Hold each 20-30 seconds.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- INTERMEDIATE -->
+                <div class="workout-level" id="level-intermediate">
+                    <h2>Intermediate — Building Strength &amp; Endurance</h2>
+                    <p>4 days per week, 30-40 minutes. Light dumbbells or resistance bands recommended.</p>
+
+                    <div class="workout-card">
+                        <h3>Day 1 — Lower Body Power</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Goblet Squats</span>
+                                <span class="exercise-detail">4 sets x 12 reps</span>
+                                <p class="exercise-note">Hold a dumbbell at chest height. Squat deep with control. Builds quad and glute strength.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Romanian Deadlifts</span>
+                                <span class="exercise-detail">3 sets x 10 reps</span>
+                                <p class="exercise-note">Hold dumbbells, hinge at the hips, keep back flat. Strengthens the entire posterior chain.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Reverse Lunges</span>
+                                <span class="exercise-detail">3 sets x 10 reps each leg</span>
+                                <p class="exercise-note">Step backward into lunge position. Easier on knees than forward lunges.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Single-Leg Glute Bridge</span>
+                                <span class="exercise-detail">3 sets x 10 reps each side</span>
+                                <p class="exercise-note">Same as glute bridge but with one leg extended. Builds balance and isolates each glute.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 2 — Upper Body Strength</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Dumbbell Chest Press</span>
+                                <span class="exercise-detail">3 sets x 10 reps</span>
+                                <p class="exercise-note">Lie on a bench or floor. Press dumbbells up from chest level. Builds chest and arm strength.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Bent-Over Rows</span>
+                                <span class="exercise-detail">3 sets x 12 reps</span>
+                                <p class="exercise-note">Hinge forward at hips, pull dumbbells to waist. Strengthens upper back and posture.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Overhead Press</span>
+                                <span class="exercise-detail">3 sets x 10 reps</span>
+                                <p class="exercise-note">Press dumbbells overhead from shoulder height. Great for shoulder strength and bone density.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Resistance Band Pull-Aparts</span>
+                                <span class="exercise-detail">3 sets x 15 reps</span>
+                                <p class="exercise-note">Hold band at chest height, pull apart. Improves posture and shoulder health.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 3 — Core &amp; Stability</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Plank Hold</span>
+                                <span class="exercise-detail">3 sets x 30-45 seconds</span>
+                                <p class="exercise-note">On forearms and toes, body in a straight line. Builds deep core strength.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Pallof Press</span>
+                                <span class="exercise-detail">3 sets x 10 reps each side</span>
+                                <p class="exercise-note">Use a resistance band anchored to your side. Press forward resisting rotation. Excellent anti-rotation core work.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Side Plank</span>
+                                <span class="exercise-detail">3 sets x 20-30 seconds each side</span>
+                                <p class="exercise-note">On forearm and stacked feet. Modify by dropping the bottom knee. Strengthens obliques.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Farmer's Carry</span>
+                                <span class="exercise-detail">3 sets x 30 seconds</span>
+                                <p class="exercise-note">Hold a weight in each hand, walk with tall posture. Builds grip, core, and overall stability.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 4 — Active Recovery &amp; Mobility</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">30-Minute Walk</span>
+                                <span class="exercise-detail">Moderate pace</span>
+                                <p class="exercise-note">Outdoors if possible. Walking is one of the best forms of exercise for longevity and mood.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Hip Opener Sequence</span>
+                                <span class="exercise-detail">10 minutes</span>
+                                <p class="exercise-note">Pigeon stretch, 90/90 stretch, hip circles. Counteracts sitting and keeps hips mobile.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Thoracic Spine Rotation</span>
+                                <span class="exercise-detail">3 sets x 8 reps each side</span>
+                                <p class="exercise-note">On hands and knees, hand behind head, rotate open. Improves upper back mobility.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ADVANCED -->
+                <div class="workout-level" id="level-advanced">
+                    <h2>Advanced — Peak Performance</h2>
+                    <p>5 days per week, 40-50 minutes. Dumbbells, resistance bands, and optional barbell.</p>
+
+                    <div class="workout-card">
+                        <h3>Day 1 — Heavy Lower Body</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Barbell or Dumbbell Squats</span>
+                                <span class="exercise-detail">4 sets x 8 reps</span>
+                                <p class="exercise-note">Focus on depth and control. Heavy squats build bone density and functional strength.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Bulgarian Split Squats</span>
+                                <span class="exercise-detail">3 sets x 10 reps each leg</span>
+                                <p class="exercise-note">Rear foot elevated on bench. Hold dumbbells for added resistance.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Hip Thrusts</span>
+                                <span class="exercise-detail">4 sets x 10 reps</span>
+                                <p class="exercise-note">Back on bench, barbell or heavy dumbbell on hips. The gold standard for glute development.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Nordic Hamstring Curl (Assisted)</span>
+                                <span class="exercise-detail">3 sets x 6 reps</span>
+                                <p class="exercise-note">Kneel with feet anchored, lower slowly. Use hands to push back up as needed.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 2 — Push (Chest, Shoulders, Triceps)</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Push-Ups (Full or Incline)</span>
+                                <span class="exercise-detail">4 sets x 12 reps</span>
+                                <p class="exercise-note">Full range of motion. One of the best functional exercises at any age.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Dumbbell Shoulder Press</span>
+                                <span class="exercise-detail">4 sets x 10 reps</span>
+                                <p class="exercise-note">Seated or standing. Press overhead with control.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Tricep Dips (Bench)</span>
+                                <span class="exercise-detail">3 sets x 12 reps</span>
+                                <p class="exercise-note">Hands on bench edge, lower and press. Skip if you have shoulder issues — do tricep kickbacks instead.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Lateral Raises</span>
+                                <span class="exercise-detail">3 sets x 12 reps</span>
+                                <p class="exercise-note">Light weights, lift to shoulder height. Builds shoulder cap definition.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 3 — Pull (Back, Biceps)</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Dumbbell Rows</span>
+                                <span class="exercise-detail">4 sets x 10 reps each arm</span>
+                                <p class="exercise-note">One hand on bench, row dumbbell to hip. Squeeze shoulder blade at the top.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Face Pulls (Band)</span>
+                                <span class="exercise-detail">3 sets x 15 reps</span>
+                                <p class="exercise-note">Pull band to face level, externally rotating shoulders. Protects shoulder health.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Bicep Curls</span>
+                                <span class="exercise-detail">3 sets x 12 reps</span>
+                                <p class="exercise-note">Dumbbells or resistance band. Slow and controlled.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Reverse Flyes</span>
+                                <span class="exercise-detail">3 sets x 12 reps</span>
+                                <p class="exercise-note">Bent forward, lift light dumbbells to the sides. Builds upper back and improves posture.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 4 — Core &amp; Conditioning</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">Turkish Get-Up</span>
+                                <span class="exercise-detail">3 sets x 3 reps each side</span>
+                                <p class="exercise-note">Full body movement from lying to standing while holding a weight overhead. Master with no weight first.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Hanging Knee Raises</span>
+                                <span class="exercise-detail">3 sets x 10 reps</span>
+                                <p class="exercise-note">Hang from a bar, bring knees to chest. Modify by doing captain's chair or lying leg raises.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Kettlebell Swings</span>
+                                <span class="exercise-detail">4 sets x 15 reps</span>
+                                <p class="exercise-note">Hip hinge movement. Builds explosive hip power and cardiovascular fitness.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Ab Rollout (Wheel or Ball)</span>
+                                <span class="exercise-detail">3 sets x 8 reps</span>
+                                <p class="exercise-note">Kneel, roll forward, pull back with core. Advanced core strength builder.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="workout-card">
+                        <h3>Day 5 — Active Recovery &amp; Yoga Flow</h3>
+                        <ul class="exercise-list">
+                            <li>
+                                <span class="exercise-name">20-Minute Yoga Flow</span>
+                                <span class="exercise-detail">Sun salutations + warrior sequence</span>
+                                <p class="exercise-note">Focus on breath-linked movement. Builds flexibility, balance, and mental clarity.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Foam Rolling</span>
+                                <span class="exercise-detail">10 minutes</span>
+                                <p class="exercise-note">Roll quads, hamstrings, glutes, upper back. Spend extra time on tight spots.</p>
+                            </li>
+                            <li>
+                                <span class="exercise-name">Breathwork</span>
+                                <span class="exercise-detail">5 minutes</span>
+                                <p class="exercise-note">Box breathing: 4 counts in, 4 counts hold, 4 counts out, 4 counts hold. Reduces cortisol.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUTRITION PAGE -->
+        <section id="page-nutrition" class="page">
+            <div class="container">
+                <h1>Nutrition Guide</h1>
+                <p class="page-intro">Eating well after 40 isn't about restriction — it's about fueling your body with what it needs to thrive. Here are evidence-based guidelines.</p>
+
+                <div class="nutrition-grid">
+                    <div class="nutrition-card">
+                        <h3>&#x1F969; Protein Priority</h3>
+                        <p>After 40, muscle protein synthesis slows down. Aim for <strong>1.2-1.6g of protein per kg of body weight</strong> daily to maintain and build muscle.</p>
+                        <ul>
+                            <li>Include protein at every meal (25-30g per meal)</li>
+                            <li>Great sources: eggs, chicken, fish, Greek yogurt, lentils, tofu</li>
+                            <li>Consider a protein shake after workouts if you struggle to hit targets</li>
+                        </ul>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <h3>&#x1F9B4; Bone-Building Nutrients</h3>
+                        <p>Estrogen decline accelerates bone loss. These nutrients are your allies:</p>
+                        <ul>
+                            <li><strong>Calcium:</strong> 1,000-1,200mg/day — dairy, leafy greens, fortified foods</li>
+                            <li><strong>Vitamin D:</strong> 1,000-2,000 IU/day — sunlight, fatty fish, supplements</li>
+                            <li><strong>Magnesium:</strong> 320mg/day — nuts, seeds, dark chocolate, avocado</li>
+                            <li><strong>Vitamin K2:</strong> Helps direct calcium to bones — fermented foods, egg yolks</li>
+                        </ul>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <h3>&#x1F525; Managing Metabolism</h3>
+                        <p>Metabolic rate naturally decreases with age, but you can work with it:</p>
+                        <ul>
+                            <li>Don't slash calories — under-eating slows metabolism further</li>
+                            <li>Eat enough to fuel your workouts (at least 1,600-1,800 cal for active women)</li>
+                            <li>Prioritize fiber-rich foods for satiety (25-30g/day)</li>
+                            <li>Stay hydrated — 8+ glasses of water daily</li>
+                        </ul>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <h3>&#x1F33F; Anti-Inflammatory Foods</h3>
+                        <p>Chronic inflammation increases with age. An anti-inflammatory diet can reduce joint pain and improve recovery:</p>
+                        <ul>
+                            <li><strong>Omega-3s:</strong> Salmon, sardines, walnuts, flaxseed</li>
+                            <li><strong>Berries:</strong> Blueberries, strawberries — packed with antioxidants</li>
+                            <li><strong>Turmeric &amp; Ginger:</strong> Add to smoothies, teas, or cooking</li>
+                            <li><strong>Leafy Greens:</strong> Spinach, kale, swiss chard</li>
+                            <li><strong>Limit:</strong> Processed foods, excess sugar, refined oils</li>
+                        </ul>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <h3>&#x1F375; Hormone-Supporting Foods</h3>
+                        <p>Certain foods can help ease hormonal transition symptoms:</p>
+                        <ul>
+                            <li><strong>Phytoestrogens:</strong> Soy, flaxseed, sesame seeds</li>
+                            <li><strong>Cruciferous vegetables:</strong> Broccoli, cauliflower — support estrogen metabolism</li>
+                            <li><strong>Healthy fats:</strong> Avocado, olive oil, nuts — support hormone production</li>
+                            <li><strong>B vitamins:</strong> Whole grains, eggs, legumes — energy and mood support</li>
+                        </ul>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <h3>&#x1F371; Sample Day of Eating</h3>
+                        <div class="meal-plan">
+                            <p><strong>Breakfast:</strong> Greek yogurt parfait with berries, walnuts, and ground flaxseed</p>
+                            <p><strong>Snack:</strong> Apple with almond butter</p>
+                            <p><strong>Lunch:</strong> Grilled chicken salad with mixed greens, avocado, chickpeas, and olive oil dressing</p>
+                            <p><strong>Snack:</strong> Protein shake with banana and spinach</p>
+                            <p><strong>Dinner:</strong> Baked salmon with roasted sweet potato and steamed broccoli</p>
+                            <p><strong>Evening:</strong> Chamomile tea with a small square of dark chocolate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRACKER PAGE -->
+        <section id="page-tracker" class="page">
+            <div class="container">
+                <h1>My Progress Tracker</h1>
+                <p class="page-intro">Log your workouts and watch your consistency grow. Your data stays right here in your browser.</p>
+
+                <div class="tracker-layout">
+                    <div class="tracker-form-section">
+                        <h2>Log a Workout</h2>
+                        <form id="workout-form">
+                            <div class="form-group">
+                                <label for="workout-date">Date</label>
+                                <input type="date" id="workout-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="workout-type">Workout Type</label>
+                                <select id="workout-type" required>
+                                    <option value="">Select...</option>
+                                    <option value="Lower Body">Lower Body</option>
+                                    <option value="Upper Body">Upper Body</option>
+                                    <option value="Full Body">Full Body</option>
+                                    <option value="Core">Core</option>
+                                    <option value="Cardio">Cardio</option>
+                                    <option value="Yoga / Flexibility">Yoga / Flexibility</option>
+                                    <option value="Walking">Walking</option>
+                                    <option value="Active Recovery">Active Recovery</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="workout-duration">Duration (minutes)</label>
+                                <input type="number" id="workout-duration" min="5" max="180" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="workout-energy">How did you feel?</label>
+                                <select id="workout-energy">
+                                    <option value="great">Great — full of energy</option>
+                                    <option value="good">Good — solid workout</option>
+                                    <option value="okay">Okay — got it done</option>
+                                    <option value="tired">Tired — pushed through</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="workout-notes">Notes (optional)</label>
+                                <textarea id="workout-notes" rows="2" placeholder="How was the workout? Any milestones?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Log Workout</button>
+                        </form>
+                    </div>
+
+                    <div class="tracker-stats-section">
+                        <h2>Your Stats</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-number" id="stat-total">0</span>
+                                <span class="stat-label">Total Workouts</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number" id="stat-streak">0</span>
+                                <span class="stat-label">Current Streak (days)</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number" id="stat-week">0</span>
+                                <span class="stat-label">This Week</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number" id="stat-minutes">0</span>
+                                <span class="stat-label">Total Minutes</span>
+                            </div>
+                        </div>
+
+                        <h3>Workout History</h3>
+                        <div id="workout-history" class="workout-history">
+                            <p class="empty-state">No workouts logged yet. Start your journey above!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WELLNESS PAGE -->
+        <section id="page-wellness" class="page">
+            <div class="container">
+                <h1>Wellness Guide</h1>
+                <p class="page-intro">Fitness is more than exercise. These evidence-based tips address the unique wellness needs of women over 40.</p>
+
+                <div class="wellness-grid">
+                    <article class="wellness-card">
+                        <h3>&#x1F634; Sleep &amp; Recovery</h3>
+                        <p>Sleep quality often declines during perimenopause and menopause. Yet sleep is when your body repairs muscle and regulates hormones.</p>
+                        <ul>
+                            <li>Aim for 7-9 hours per night</li>
+                            <li>Keep your bedroom cool (65-68&deg;F / 18-20&deg;C) — especially helpful for night sweats</li>
+                            <li>Limit caffeine after 2 PM</li>
+                            <li>Try magnesium glycinate before bed — may improve sleep quality</li>
+                            <li>Establish a wind-down routine: no screens 30 min before bed</li>
+                        </ul>
+                    </article>
+
+                    <article class="wellness-card">
+                        <h3>&#x1F9E0; Stress &amp; Cortisol Management</h3>
+                        <p>Chronic stress raises cortisol, which promotes belly fat storage and disrupts sleep. Managing stress is as important as any workout.</p>
+                        <ul>
+                            <li>Practice 5-10 minutes of daily breathwork or meditation</li>
+                            <li>Try "physiological sighing" — double inhale through nose, long exhale through mouth</li>
+                            <li>Limit high-intensity workouts to 3x/week — too much can raise cortisol</li>
+                            <li>Prioritize nature walks — shown to reduce cortisol by 12-16%</li>
+                            <li>Say no to things that drain you — rest is productive</li>
+                        </ul>
+                    </article>
+
+                    <article class="wellness-card">
+                        <h3>&#x1F3CB;&#xFE0F; Strength Training &amp; Bone Health</h3>
+                        <p>After 40, women can lose up to 1-2% of bone density per year. Strength training is the most effective countermeasure.</p>
+                        <ul>
+                            <li>Lift heavy enough that the last 2 reps are challenging</li>
+                            <li>Focus on compound movements: squats, deadlifts, presses</li>
+                            <li>Impact exercises (jumping, stair climbing) also build bone — if joints allow</li>
+                            <li>Consistency matters more than intensity — 3x/week is enough</li>
+                            <li>Get a DEXA scan to know your baseline bone density</li>
+                        </ul>
+                    </article>
+
+                    <article class="wellness-card">
+                        <h3>&#x1F321;&#xFE0F; Navigating Perimenopause &amp; Menopause</h3>
+                        <p>Hormonal changes can affect energy, mood, weight, and recovery. Understanding what's happening helps you train smarter.</p>
+                        <ul>
+                            <li>Hot flashes? Exercise actually reduces their frequency and severity</li>
+                            <li>Energy dips are normal — adjust workout intensity day by day</li>
+                            <li>Weight may redistribute to the midsection — this is hormonal, not a failure</li>
+                            <li>Talk to your doctor about hormone therapy if symptoms are severe</li>
+                            <li>Track your cycle (if still menstruating) to plan harder and easier training days</li>
+                        </ul>
+                    </article>
+
+                    <article class="wellness-card">
+                        <h3>&#x1F493; Heart Health</h3>
+                        <p>Heart disease risk increases after menopause as estrogen's protective effect decreases. Exercise is your best prevention.</p>
+                        <ul>
+                            <li>Aim for 150 minutes of moderate cardio per week (walking counts!)</li>
+                            <li>Add 2+ strength training sessions for heart-protective benefits</li>
+                            <li>Monitor blood pressure — know your numbers</li>
+                            <li>Omega-3 fatty acids support cardiovascular health</li>
+                            <li>Reduce sodium and increase potassium-rich foods</li>
+                        </ul>
+                    </article>
+
+                    <article class="wellness-card">
+                        <h3>&#x1F31E; Mental Health &amp; Community</h3>
+                        <p>Physical activity is one of the most effective treatments for anxiety and depression — and community amplifies the effect.</p>
+                        <ul>
+                            <li>Exercise releases endorphins, serotonin, and BDNF (brain growth factor)</li>
+                            <li>Find a workout buddy or join a group — accountability helps consistency</li>
+                            <li>Celebrate non-scale victories: energy, strength, mood, sleep quality</li>
+                            <li>Journal your progress — writing reinforces positive change</li>
+                            <li>Be patient with yourself — this is a marathon, not a sprint</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 FitLife — Fitness Coaching for Women 40+</p>
+            <p>Consult your healthcare provider before starting any exercise program.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
