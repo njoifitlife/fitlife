@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Dumbbell, Apple, TrendingUp, User } from "lucide-react";
+import { LayoutDashboard, Dumbbell, Apple, TrendingUp, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tabs = [
@@ -10,7 +10,7 @@ const tabs = [
   { href: "/workouts", label: "Workouts", icon: Dumbbell },
   { href: "/nutrition", label: "Nutrition", icon: Apple },
   { href: "/progress", label: "Progress", icon: TrendingUp },
-  { href: "/settings", label: "Profile", icon: User },
+  { href: "/community", label: "Community", icon: Users },
 ];
 
 export function BottomNav() {

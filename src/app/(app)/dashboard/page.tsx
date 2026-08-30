@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dumbbell, Apple, Bone, TrendingUp, ChevronRight } from "lucide-react";
+import { Dumbbell, Apple, Bone, TrendingUp, ChevronRight, Trophy, Users, Settings } from "lucide-react";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -158,6 +158,42 @@ export default async function DashboardPage() {
           </Card>
         </Link>
 
+        {/* Challenges */}
+        <Link href="/challenges">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardContent className="flex items-center gap-4 py-5">
+              <div className="h-12 w-12 rounded-xl bg-warning/10 flex items-center justify-center text-warning shrink-0">
+                <Trophy className="h-6 w-6" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold">Challenges</p>
+                <p className="text-sm text-muted-foreground">
+                  Join a challenge to build consistency
+                </p>
+              </div>
+              <ChevronRight className="h-5 w-5 text-muted-foreground shrink-0" />
+            </CardContent>
+          </Card>
+        </Link>
+
+        {/* Community */}
+        <Link href="/community">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardContent className="flex items-center gap-4 py-5">
+              <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                <Users className="h-6 w-6" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold">Community</p>
+                <p className="text-sm text-muted-foreground">
+                  Motivation, milestones, and support
+                </p>
+              </div>
+              <ChevronRight className="h-5 w-5 text-muted-foreground shrink-0" />
+            </CardContent>
+          </Card>
+        </Link>
+
         {/* Progress */}
         <Card>
           <CardHeader className="pb-3">
@@ -187,6 +223,24 @@ export default async function DashboardPage() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Profile / Settings */}
+        <Link href="/settings">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardContent className="flex items-center gap-4 py-5">
+              <div className="h-12 w-12 rounded-xl bg-muted flex items-center justify-center text-muted-foreground shrink-0">
+                <Settings className="h-6 w-6" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold">Profile & Settings</p>
+                <p className="text-sm text-muted-foreground">
+                  Account, subscription, and preferences
+                </p>
+              </div>
+              <ChevronRight className="h-5 w-5 text-muted-foreground shrink-0" />
+            </CardContent>
+          </Card>
+        </Link>
       </div>
     </div>
   );

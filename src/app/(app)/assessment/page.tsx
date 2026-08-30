@@ -11,7 +11,7 @@ import { getOrCreateAssessment, saveAssessmentSection, completeAssessment } from
 import type { Assessment, Goal } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-const TOTAL_SECTIONS = 7;
+const TOTAL_SECTIONS = 8;
 
 const GOALS: { value: Goal; label: string }[] = [
   { value: "strength", label: "Build strength" },
@@ -91,6 +91,11 @@ export default function AssessmentPage() {
       disliked_foods: data.disliked_foods,
       meals_per_day: data.meals_per_day,
       exercise_preferences: data.exercise_preferences || [],
+      number_of_kids: data.number_of_kids,
+      stress_level: data.stress_level,
+      sleep_quality: data.sleep_quality,
+      goal_weight_lbs: data.goal_weight_lbs,
+      postpartum: data.postpartum || false,
     });
   }, []);
 
@@ -170,6 +175,14 @@ export default function AssessmentPage() {
         };
       case 7:
         return { exercise_preferences: formData.exercise_preferences };
+      case 8:
+        return {
+          number_of_kids: formData.number_of_kids ? Number(formData.number_of_kids) : null,
+          stress_level: formData.stress_level,
+          sleep_quality: formData.sleep_quality,
+          goal_weight_lbs: formData.goal_weight_lbs ? Number(formData.goal_weight_lbs) : null,
+          postpartum: formData.postpartum,
+        };
       default:
         return {};
     }
@@ -385,6 +398,7 @@ export default function AssessmentPage() {
                   onChange={(e) => updateField("session_duration", e.target.value)}
                 >
                   <option value="">Select...</option>
+                  <option value="10">10 minutes</option>
                   <option value="20">20 minutes</option>
                   <option value="30">30 minutes</option>
                   <option value="45">45 minutes</option>
@@ -492,6 +506,94 @@ export default function AssessmentPage() {
             </div>
           )}
 
+          {section === 8 && (
+            <>
+              <div className="space-y-2">
+                <Label htmlFor="goal_weight">Goal weight (lbs, optional)</Label>
+                <Input
+                  id="goal_weight"
+                  type="number"
+                  min={80}
+                  max={500}
+                  value={(formData.goal_weight_lbs as number) || ""}
+                  onChange={(e) => updateField("goal_weight_lbs", e.target.value)}
+                  placeholder="e.g., 140"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="kids">Number of kids</Label>
+                <Select
+                  id="kids"
+                  value={String(formData.number_of_kids ?? "")}
+                  onChange={(e) => updateField("number_of_kids", e.target.value)}
+                >
+                  <option value="">Select...</option>
+                  {[0, 1, 2, 3, 4, 5].map((n) => (
+                    <option key={n} value={n}>
+                      {n === 0 ? "None" : n === 5 ? "5+" : String(n)}
+                    </option>
+                  ))}
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="stress">Stress level</Label>
+                <Select
+                  id="stress"
+                  value={(formData.stress_level as string) || ""}
+                  onChange={(e) => updateField("stress_level", e.target.value)}
+                >
+                  <option value="">Select...</option>
+                  <option value="low">Low</option>
+                  <option value="moderate">Moderate</option>
+                  <option value="high">High</option>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="sleep">Sleep quality</Label>
+                <Select
+                  id="sleep"
+                  value={(formData.sleep_quality as string) || ""}
+                  onChange={(e) => updateField("sleep_quality", e.target.value)}
+                >
+                  <option value="">Select...</option>
+                  <option value="poor">Poor (trouble falling or staying asleep)</option>
+                  <option value="fair">Fair (sometimes restless)</option>
+                  <option value="good">Good (usually sleep well)</option>
+                  <option value="excellent">Excellent (consistently restful)</option>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Are you postpartum or recently post-pregnancy?</Label>
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => updateField("postpartum", true)}
+                    className={cn(
+                      "flex-1 px-4 py-3 rounded-lg border text-sm font-medium transition-colors",
+                      formData.postpartum === true
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-card border-border hover:bg-secondary"
+                    )}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => updateField("postpartum", false)}
+                    className={cn(
+                      "flex-1 px-4 py-3 rounded-lg border text-sm font-medium transition-colors",
+                      formData.postpartum === false
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-card border-border hover:bg-secondary"
+                    )}
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
+
           {/* Navigation */}
           <div className="flex gap-3 pt-4">
             {section > 1 && (
@@ -530,6 +632,7 @@ function sectionTitle(s: number): string {
     5: "Equipment",
     6: "Nutrition preferences",
     7: "Exercise preferences",
+    8: "Lifestyle & wellness",
   };
   return titles[s] || "";
 }
@@ -543,6 +646,7 @@ function sectionSubtitle(s: number): string {
     5: "What do you have access to?",
     6: "We'll match meal suggestions to your preferences.",
     7: "What types of exercise interest you most?",
+    8: "A few more details to personalize your plan.",
   };
   return subs[s] || "";
 }

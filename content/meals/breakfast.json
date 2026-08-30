@@ -1,0 +1,162 @@
+[
+  {
+    "id": "greek-yogurt-berry-bowl",
+    "name": "Greek Yogurt Berry Bowl",
+    "meal_type": "breakfast",
+    "dietary_tags": ["vegetarian", "gluten_free"],
+    "allergen_tags": ["dairy"],
+    "nutrition_tags": ["high_protein", "calcium_rich", "bone_health_support"],
+    "ingredients": [
+      "1 cup plain Greek yogurt",
+      "1/2 cup mixed berries (blueberries, strawberries, raspberries)",
+      "2 tablespoons walnuts or almonds, chopped",
+      "1 tablespoon ground flaxseed",
+      "Drizzle of honey (optional)"
+    ],
+    "prep_steps": [
+      "Spoon Greek yogurt into a bowl.",
+      "Top with mixed berries.",
+      "Sprinkle with chopped nuts and ground flaxseed.",
+      "Add a drizzle of honey if desired."
+    ],
+    "substitute_meal_ids": ["overnight-oats", "smoothie-bowl"]
+  },
+  {
+    "id": "overnight-oats",
+    "name": "Overnight Oats with Chia Seeds",
+    "meal_type": "breakfast",
+    "dietary_tags": ["vegetarian", "vegan"],
+    "allergen_tags": ["gluten"],
+    "nutrition_tags": ["high_fiber", "bone_health_support"],
+    "ingredients": [
+      "1/2 cup rolled oats",
+      "1/2 cup milk of choice",
+      "1/4 cup plain yogurt or additional milk",
+      "1 tablespoon chia seeds",
+      "1/2 banana, sliced",
+      "1 tablespoon almond butter"
+    ],
+    "prep_steps": [
+      "Combine oats, milk, yogurt, and chia seeds in a jar or container.",
+      "Stir well, cover, and refrigerate overnight (or at least 4 hours).",
+      "In the morning, top with sliced banana and almond butter.",
+      "Enjoy cold or microwave for 1-2 minutes if you prefer warm oats."
+    ],
+    "substitute_meal_ids": ["greek-yogurt-berry-bowl", "smoothie-bowl"]
+  },
+  {
+    "id": "smoothie-bowl",
+    "name": "Protein Smoothie Bowl",
+    "meal_type": "breakfast",
+    "dietary_tags": ["vegetarian", "gluten_free"],
+    "allergen_tags": ["dairy"],
+    "nutrition_tags": ["high_protein", "calcium_rich"],
+    "ingredients": [
+      "1 scoop vanilla or unflavored protein powder",
+      "1 cup frozen mixed berries",
+      "1/2 banana",
+      "1/2 cup milk of choice",
+      "Toppings: granola, sliced almonds, coconut flakes"
+    ],
+    "prep_steps": [
+      "Blend protein powder, frozen berries, banana, and milk until thick and smooth (use less liquid for a thicker consistency).",
+      "Pour into a bowl.",
+      "Add toppings of your choice.",
+      "Eat immediately — smoothie bowls don't keep well."
+    ],
+    "substitute_meal_ids": ["greek-yogurt-berry-bowl", "veggie-egg-scramble"]
+  },
+  {
+    "id": "veggie-egg-scramble",
+    "name": "Veggie Egg Scramble",
+    "meal_type": "breakfast",
+    "dietary_tags": ["vegetarian", "gluten_free"],
+    "allergen_tags": ["eggs"],
+    "nutrition_tags": ["high_protein", "vitamin_d"],
+    "ingredients": [
+      "2-3 eggs",
+      "1/2 cup spinach, chopped",
+      "1/4 cup bell pepper, diced",
+      "2 tablespoons onion, diced",
+      "1 tablespoon olive oil or butter",
+      "Salt and pepper to taste"
+    ],
+    "prep_steps": [
+      "Heat olive oil or butter in a skillet over medium heat.",
+      "Sauté onion and bell pepper until softened, about 3 minutes.",
+      "Add spinach and cook until wilted, about 1 minute.",
+      "Pour in beaten eggs and gently stir until cooked through.",
+      "Season with salt and pepper."
+    ],
+    "substitute_meal_ids": ["greek-yogurt-berry-bowl", "avocado-toast"]
+  },
+  {
+    "id": "avocado-toast",
+    "name": "Avocado Toast with Eggs",
+    "meal_type": "breakfast",
+    "dietary_tags": ["vegetarian"],
+    "allergen_tags": ["gluten", "eggs"],
+    "nutrition_tags": ["healthy_fats", "high_fiber"],
+    "ingredients": [
+      "2 slices whole-grain bread",
+      "1 ripe avocado",
+      "2 eggs",
+      "Squeeze of lemon juice",
+      "Red pepper flakes (optional)",
+      "Salt and pepper to taste"
+    ],
+    "prep_steps": [
+      "Toast the bread to your liking.",
+      "Mash avocado with lemon juice, salt, and pepper.",
+      "Cook eggs as desired (poached, fried, or scrambled).",
+      "Spread mashed avocado on toast and top with eggs.",
+      "Sprinkle with red pepper flakes if desired."
+    ],
+    "substitute_meal_ids": ["veggie-egg-scramble", "overnight-oats"]
+  },
+  {
+    "id": "banana-oat-pancakes",
+    "name": "Banana Oat Pancakes",
+    "meal_type": "breakfast",
+    "dietary_tags": ["vegetarian", "gluten_free"],
+    "allergen_tags": ["eggs"],
+    "nutrition_tags": ["high_fiber"],
+    "ingredients": [
+      "1 ripe banana",
+      "2 eggs",
+      "1/3 cup rolled oats (certified gluten-free if needed)",
+      "1/4 teaspoon cinnamon",
+      "1 teaspoon coconut oil for the pan",
+      "Toppings: berries, maple syrup, nut butter"
+    ],
+    "prep_steps": [
+      "Blend banana, eggs, oats, and cinnamon until smooth.",
+      "Heat a skillet over medium heat with coconut oil.",
+      "Pour small pancakes (about 3 inches across) and cook until bubbles form, about 2 minutes.",
+      "Flip and cook another 1-2 minutes until golden.",
+      "Serve with your choice of toppings."
+    ],
+    "substitute_meal_ids": ["overnight-oats", "smoothie-bowl"]
+  },
+  {
+    "id": "cottage-cheese-fruit",
+    "name": "Cottage Cheese and Fruit Bowl",
+    "meal_type": "breakfast",
+    "dietary_tags": ["vegetarian", "gluten_free"],
+    "allergen_tags": ["dairy"],
+    "nutrition_tags": ["high_protein", "calcium_rich", "bone_health_support"],
+    "ingredients": [
+      "1 cup cottage cheese",
+      "1/2 cup pineapple chunks or peach slices",
+      "1 tablespoon pumpkin seeds",
+      "1 tablespoon honey or maple syrup (optional)",
+      "Pinch of cinnamon"
+    ],
+    "prep_steps": [
+      "Spoon cottage cheese into a bowl.",
+      "Top with fruit and pumpkin seeds.",
+      "Drizzle with honey and sprinkle with cinnamon if desired."
+    ],
+    "substitute_meal_ids": ["greek-yogurt-berry-bowl", "smoothie-bowl"]
+  }
+]

@@ -1,0 +1,147 @@
+[
+  {
+    "id": "trail-mix",
+    "name": "Homemade Trail Mix",
+    "meal_type": "snack",
+    "dietary_tags": ["vegan", "vegetarian", "gluten_free", "dairy_free"],
+    "allergen_tags": ["tree_nuts"],
+    "nutrition_tags": ["healthy_fats", "bone_health_support"],
+    "ingredients": [
+      "1/4 cup almonds",
+      "2 tablespoons pumpkin seeds",
+      "2 tablespoons dried cranberries (unsweetened if possible)",
+      "1 tablespoon dark chocolate chips (optional)"
+    ],
+    "prep_steps": [
+      "Combine all ingredients in a small container.",
+      "Portion into individual servings for grab-and-go snacking.",
+      "Store in an airtight container for up to 2 weeks."
+    ],
+    "substitute_meal_ids": ["apple-almond-butter", "edamame-snack"]
+  },
+  {
+    "id": "apple-almond-butter",
+    "name": "Apple Slices with Almond Butter",
+    "meal_type": "snack",
+    "dietary_tags": ["vegan", "vegetarian", "gluten_free", "dairy_free"],
+    "allergen_tags": ["tree_nuts"],
+    "nutrition_tags": ["high_fiber", "healthy_fats"],
+    "ingredients": [
+      "1 medium apple, sliced",
+      "2 tablespoons almond butter",
+      "Sprinkle of cinnamon (optional)"
+    ],
+    "prep_steps": [
+      "Slice the apple into wedges.",
+      "Serve with almond butter for dipping.",
+      "Sprinkle with cinnamon if desired."
+    ],
+    "substitute_meal_ids": ["trail-mix", "yogurt-snack"]
+  },
+  {
+    "id": "yogurt-snack",
+    "name": "Yogurt and Granola Cup",
+    "meal_type": "snack",
+    "dietary_tags": ["vegetarian"],
+    "allergen_tags": ["dairy", "gluten"],
+    "nutrition_tags": ["high_protein", "calcium_rich", "bone_health_support"],
+    "ingredients": [
+      "3/4 cup plain Greek yogurt",
+      "2 tablespoons granola",
+      "1 tablespoon honey",
+      "Small handful of berries"
+    ],
+    "prep_steps": [
+      "Spoon yogurt into a cup or small bowl.",
+      "Top with granola and berries.",
+      "Drizzle with honey."
+    ],
+    "substitute_meal_ids": ["apple-almond-butter", "cottage-cheese-fruit"]
+  },
+  {
+    "id": "edamame-snack",
+    "name": "Steamed Edamame with Sea Salt",
+    "meal_type": "snack",
+    "dietary_tags": ["vegan", "vegetarian", "gluten_free", "dairy_free"],
+    "allergen_tags": ["soy"],
+    "nutrition_tags": ["high_protein", "calcium_rich", "bone_health_support"],
+    "ingredients": [
+      "1 cup frozen edamame in the shell",
+      "1/2 teaspoon sea salt",
+      "Squeeze of lemon (optional)"
+    ],
+    "prep_steps": [
+      "Steam or microwave edamame according to package directions (usually 3-5 minutes).",
+      "Drain and sprinkle with sea salt.",
+      "Squeeze lemon juice over the top if desired.",
+      "Eat by squeezing the beans out of the pods."
+    ],
+    "substitute_meal_ids": ["trail-mix", "hummus-veggies"]
+  },
+  {
+    "id": "hummus-veggies",
+    "name": "Hummus with Veggie Sticks",
+    "meal_type": "snack",
+    "dietary_tags": ["vegan", "vegetarian", "gluten_free", "dairy_free"],
+    "allergen_tags": ["sesame"],
+    "nutrition_tags": ["high_fiber", "healthy_fats"],
+    "ingredients": [
+      "1/3 cup hummus",
+      "1 carrot, cut into sticks",
+      "1/2 bell pepper, sliced",
+      "1/2 cup cucumber rounds",
+      "Handful of cherry tomatoes"
+    ],
+    "prep_steps": [
+      "Wash and cut vegetables into sticks and rounds.",
+      "Place hummus in a small bowl or container.",
+      "Arrange vegetables around the hummus for dipping."
+    ],
+    "substitute_meal_ids": ["edamame-snack", "trail-mix"]
+  },
+  {
+    "id": "energy-bites",
+    "name": "No-Bake Energy Bites",
+    "meal_type": "snack",
+    "dietary_tags": ["vegetarian", "gluten_free"],
+    "allergen_tags": ["tree_nuts"],
+    "nutrition_tags": ["high_fiber", "healthy_fats"],
+    "ingredients": [
+      "1 cup rolled oats (certified gluten-free if needed)",
+      "1/2 cup peanut butter or almond butter",
+      "1/3 cup honey",
+      "1/2 cup dark chocolate chips",
+      "1 tablespoon chia seeds",
+      "1 teaspoon vanilla extract"
+    ],
+    "prep_steps": [
+      "Mix all ingredients in a bowl until well combined.",
+      "Refrigerate for 30 minutes to make the mixture easier to handle.",
+      "Roll into 1-inch balls (makes about 15-18 bites).",
+      "Store in the refrigerator for up to one week."
+    ],
+    "substitute_meal_ids": ["trail-mix", "apple-almond-butter"]
+  },
+  {
+    "id": "sardine-crackers",
+    "name": "Sardines on Whole Grain Crackers",
+    "meal_type": "snack",
+    "dietary_tags": ["pescatarian", "dairy_free"],
+    "allergen_tags": ["fish", "gluten"],
+    "nutrition_tags": ["omega_3", "calcium_rich", "vitamin_d", "bone_health_support"],
+    "ingredients": [
+      "1 can sardines in olive oil, drained",
+      "4-6 whole grain crackers",
+      "Squeeze of lemon juice",
+      "Fresh parsley or dill (optional)",
+      "Thinly sliced red onion (optional)"
+    ],
+    "prep_steps": [
+      "Arrange crackers on a plate.",
+      "Top each with sardines.",
+      "Squeeze lemon juice over the top.",
+      "Garnish with herbs and red onion if desired."
+    ],
+    "substitute_meal_ids": ["edamame-snack", "hummus-veggies"]
+  }
+]

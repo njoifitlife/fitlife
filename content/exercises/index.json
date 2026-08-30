@@ -1,0 +1,13 @@
+{
+  "files": [
+    "push.json",
+    "pull.json",
+    "squat.json",
+    "hinge.json",
+    "core.json",
+    "balance_functional.json",
+    "mobility.json"
+  ],
+  "total_exercises": 40,
+  "movement_patterns": ["push", "pull", "squat", "hinge", "core", "balance_functional", "mobility"]
+}

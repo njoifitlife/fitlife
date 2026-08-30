@@ -1,0 +1,178 @@
+[
+  {
+    "id": "salmon-sweet-potato",
+    "name": "Baked Salmon with Sweet Potato and Greens",
+    "meal_type": "lunch_dinner",
+    "dietary_tags": ["pescatarian", "gluten_free", "dairy_free"],
+    "allergen_tags": ["fish"],
+    "nutrition_tags": ["high_protein", "omega_3", "vitamin_d", "bone_health_support"],
+    "ingredients": [
+      "4-6 oz salmon fillet",
+      "1 medium sweet potato, cubed",
+      "2 cups mixed greens (kale, spinach)",
+      "1 tablespoon olive oil",
+      "1 teaspoon garlic powder",
+      "Salt, pepper, and lemon juice to taste"
+    ],
+    "prep_steps": [
+      "Preheat oven to 400°F (200°C).",
+      "Toss sweet potato cubes with half the olive oil, salt, and pepper. Spread on a baking sheet.",
+      "Season salmon with garlic powder, salt, pepper, and lemon juice. Place on the same sheet.",
+      "Bake for 20-25 minutes until salmon is cooked through and sweet potato is tender.",
+      "Toss greens with remaining olive oil and serve alongside."
+    ],
+    "substitute_meal_ids": ["chicken-grain-bowl", "lentil-soup"]
+  },
+  {
+    "id": "chicken-grain-bowl",
+    "name": "Chicken and Quinoa Grain Bowl",
+    "meal_type": "lunch_dinner",
+    "dietary_tags": ["gluten_free", "dairy_free"],
+    "allergen_tags": [],
+    "nutrition_tags": ["high_protein", "high_fiber"],
+    "ingredients": [
+      "4-6 oz grilled chicken breast",
+      "1/2 cup cooked quinoa",
+      "1/2 cup roasted vegetables (zucchini, bell peppers)",
+      "1/4 avocado, sliced",
+      "2 tablespoons tahini dressing or lemon vinaigrette",
+      "Handful of cherry tomatoes"
+    ],
+    "prep_steps": [
+      "Cook quinoa according to package directions and let cool slightly.",
+      "Season chicken with salt, pepper, and your favorite spices. Grill or pan-cook until done.",
+      "Roast vegetables at 425°F (220°C) for 15-20 minutes.",
+      "Assemble the bowl: quinoa on the bottom, then chicken, vegetables, avocado, and tomatoes.",
+      "Drizzle with dressing."
+    ],
+    "substitute_meal_ids": ["salmon-sweet-potato", "turkey-lettuce-wraps"]
+  },
+  {
+    "id": "lentil-soup",
+    "name": "Red Lentil and Vegetable Soup",
+    "meal_type": "lunch_dinner",
+    "dietary_tags": ["vegan", "vegetarian", "gluten_free", "dairy_free"],
+    "allergen_tags": [],
+    "nutrition_tags": ["high_protein", "high_fiber", "iron_rich"],
+    "ingredients": [
+      "1 cup dried red lentils, rinsed",
+      "1 can diced tomatoes",
+      "2 cups vegetable broth",
+      "1 carrot, diced",
+      "1 celery stalk, diced",
+      "1/2 onion, diced",
+      "2 cloves garlic, minced",
+      "1 teaspoon cumin",
+      "Salt, pepper, and squeeze of lemon"
+    ],
+    "prep_steps": [
+      "Sauté onion, carrot, celery, and garlic in a tablespoon of olive oil until softened, about 5 minutes.",
+      "Add cumin and stir for 30 seconds.",
+      "Add lentils, tomatoes, and broth. Bring to a boil.",
+      "Reduce heat and simmer for 20-25 minutes until lentils are very soft.",
+      "Season with salt, pepper, and lemon juice. Blend partially if you prefer a creamier texture."
+    ],
+    "substitute_meal_ids": ["tofu-stir-fry", "chicken-grain-bowl"]
+  },
+  {
+    "id": "tofu-stir-fry",
+    "name": "Tofu and Vegetable Stir-Fry",
+    "meal_type": "lunch_dinner",
+    "dietary_tags": ["vegan", "vegetarian", "dairy_free"],
+    "allergen_tags": ["soy"],
+    "nutrition_tags": ["high_protein", "calcium_rich", "bone_health_support"],
+    "ingredients": [
+      "1 block firm tofu, pressed and cubed",
+      "2 cups mixed stir-fry vegetables (broccoli, snap peas, carrots, bell pepper)",
+      "2 tablespoons soy sauce or tamari",
+      "1 tablespoon sesame oil",
+      "1 teaspoon fresh ginger, grated",
+      "1 clove garlic, minced",
+      "Cooked brown rice or noodles for serving"
+    ],
+    "prep_steps": [
+      "Press tofu for 15 minutes, then cut into cubes.",
+      "Heat sesame oil in a wok or large skillet over high heat.",
+      "Cook tofu until golden on all sides, about 5-7 minutes. Remove and set aside.",
+      "Stir-fry vegetables with garlic and ginger for 3-4 minutes until crisp-tender.",
+      "Return tofu to the pan, add soy sauce, and toss to combine.",
+      "Serve over brown rice or noodles."
+    ],
+    "substitute_meal_ids": ["lentil-soup", "salmon-sweet-potato"]
+  },
+  {
+    "id": "turkey-lettuce-wraps",
+    "name": "Turkey Lettuce Wraps",
+    "meal_type": "lunch_dinner",
+    "dietary_tags": ["gluten_free", "dairy_free"],
+    "allergen_tags": [],
+    "nutrition_tags": ["high_protein", "low_carb"],
+    "ingredients": [
+      "8 oz ground turkey",
+      "1 tablespoon olive oil",
+      "1/2 onion, diced",
+      "1 clove garlic, minced",
+      "1/2 cup water chestnuts, diced (optional)",
+      "2 tablespoons soy sauce or coconut aminos",
+      "Butter lettuce leaves for wrapping",
+      "Toppings: shredded carrots, cucumber, green onion"
+    ],
+    "prep_steps": [
+      "Heat olive oil in a skillet over medium-high heat.",
+      "Cook ground turkey with onion and garlic, breaking it up as it cooks, about 6-8 minutes.",
+      "Add water chestnuts and soy sauce, stir to combine.",
+      "Spoon the mixture into lettuce cups.",
+      "Top with shredded carrots, cucumber, and green onion."
+    ],
+    "substitute_meal_ids": ["chicken-grain-bowl", "salmon-sweet-potato"]
+  },
+  {
+    "id": "Mediterranean-plate",
+    "name": "Mediterranean Plate",
+    "meal_type": "lunch_dinner",
+    "dietary_tags": ["vegetarian", "gluten_free"],
+    "allergen_tags": ["dairy"],
+    "nutrition_tags": ["healthy_fats", "high_fiber", "calcium_rich", "bone_health_support"],
+    "ingredients": [
+      "1/2 cup hummus",
+      "1/4 cup feta cheese, crumbled",
+      "1/2 cup cherry tomatoes, halved",
+      "1/2 cucumber, sliced",
+      "1/4 cup kalamata olives",
+      "Whole grain pita or crackers",
+      "Fresh parsley or mint"
+    ],
+    "prep_steps": [
+      "Arrange hummus in the center of a plate.",
+      "Surround with cherry tomatoes, cucumber, olives, and feta.",
+      "Garnish with fresh herbs.",
+      "Serve with pita or crackers on the side."
+    ],
+    "substitute_meal_ids": ["lentil-soup", "chicken-grain-bowl"]
+  },
+  {
+    "id": "sheet-pan-chicken-veggies",
+    "name": "Sheet Pan Chicken with Roasted Vegetables",
+    "meal_type": "lunch_dinner",
+    "dietary_tags": ["gluten_free", "dairy_free"],
+    "allergen_tags": [],
+    "nutrition_tags": ["high_protein", "vitamin_rich"],
+    "ingredients": [
+      "2 chicken thighs (bone-in, skin-on or boneless)",
+      "2 cups Brussels sprouts, halved",
+      "1 sweet potato, cubed",
+      "1 tablespoon olive oil",
+      "1 teaspoon paprika",
+      "1/2 teaspoon garlic powder",
+      "Salt and pepper"
+    ],
+    "prep_steps": [
+      "Preheat oven to 425°F (220°C).",
+      "Toss vegetables with half the olive oil, salt, and pepper on a baking sheet.",
+      "Season chicken with paprika, garlic powder, salt, and pepper. Nestle among the vegetables.",
+      "Drizzle remaining olive oil over chicken.",
+      "Bake for 30-35 minutes until chicken reaches 165°F (74°C) and vegetables are golden."
+    ],
+    "substitute_meal_ids": ["chicken-grain-bowl", "salmon-sweet-potato"]
+  }
+]

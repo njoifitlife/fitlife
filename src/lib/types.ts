@@ -4,7 +4,7 @@ export type SubscriptionStatus = "active" | "canceled" | "past_due" | "trialing"
 export type ActivityLevel = "sedentary" | "lightly_active" | "moderately_active" | "very_active";
 export type FitnessLevel = "beginner" | "intermediate" | "advanced";
 export type ResistanceExperience = "none" | "some" | "regular";
-export type SessionDuration = 20 | 30 | 45 | 60;
+export type SessionDuration = 10 | 20 | 30 | 45 | 60;
 
 export type Goal =
   | "strength"
@@ -64,6 +64,11 @@ export interface Assessment {
   disliked_foods: string | null;
   meals_per_day: number | null;
   exercise_preferences: string[];
+  number_of_kids: number | null;
+  stress_level: "low" | "moderate" | "high" | null;
+  sleep_quality: "poor" | "fair" | "good" | "excellent" | null;
+  goal_weight_lbs: number | null;
+  postpartum: boolean;
   completed_at: string | null;
   current_section: number;
   created_at: string;
@@ -172,6 +177,46 @@ export interface BoneHealthArticle {
   slug: string;
   content: string;
   order: number;
+}
+
+// Workout template categories for the library
+export type WorkoutCategory =
+  | "home"
+  | "gym"
+  | "beginner"
+  | "low_impact"
+  | "core"
+  | "fat_loss"
+  | "stretching"
+  | "mobility"
+  | "post_pregnancy"
+  | "bone_health_support"
+  | "full_body"
+  | "upper_body"
+  | "lower_body";
+
+export interface WorkoutTemplate {
+  id: string;
+  name: string;
+  description: string;
+  duration_minutes: 10 | 20 | 30;
+  category: WorkoutCategory;
+  difficulty: FitnessLevel;
+  equipment: string[];
+  exercise_ids: string[];
+  image_emoji: string;
+}
+
+// Challenges
+export interface Challenge {
+  id: string;
+  name: string;
+  description: string;
+  duration_days: number;
+  category: WorkoutCategory;
+  difficulty: FitnessLevel;
+  daily_tasks: string[];
+  reward_badge: string;
 }
 
 // Pricing tiers

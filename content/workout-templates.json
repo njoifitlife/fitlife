@@ -1,0 +1,178 @@
+[
+  {
+    "id": "10min-core-home",
+    "name": "10-Min Core Blast",
+    "description": "A quick core-focused workout you can do anywhere with no equipment.",
+    "duration_minutes": 10,
+    "category": "core",
+    "difficulty": "beginner",
+    "equipment": [],
+    "exercise_ids": ["forearm-plank", "dead-bug", "bird-dog", "glute-kickback"],
+    "image_emoji": "🔥"
+  },
+  {
+    "id": "10min-stretch-morning",
+    "name": "10-Min Morning Stretch",
+    "description": "Start your day with gentle mobility work to loosen up your body.",
+    "duration_minutes": 10,
+    "category": "stretching",
+    "difficulty": "beginner",
+    "equipment": [],
+    "exercise_ids": ["cat-cow", "hip-circles", "thoracic-rotation", "ankle-circles", "shoulder-passthrough"],
+    "image_emoji": "🌅"
+  },
+  {
+    "id": "10min-low-impact",
+    "name": "10-Min Low-Impact Flow",
+    "description": "Gentle movements for days when you want to move without high intensity.",
+    "duration_minutes": 10,
+    "category": "low_impact",
+    "difficulty": "beginner",
+    "equipment": [],
+    "exercise_ids": ["glute-bridge", "bird-dog", "wall-sit", "calf-raise"],
+    "image_emoji": "🌿"
+  },
+  {
+    "id": "20min-full-body-home",
+    "name": "20-Min Full Body at Home",
+    "description": "Hit every major muscle group with bodyweight exercises — no equipment needed.",
+    "duration_minutes": 20,
+    "category": "home",
+    "difficulty": "beginner",
+    "equipment": [],
+    "exercise_ids": ["bodyweight-squat", "wall-pushup", "glute-bridge", "dead-bug", "bird-dog", "calf-raise"],
+    "image_emoji": "🏠"
+  },
+  {
+    "id": "20min-fat-loss",
+    "name": "20-Min Fat Loss Circuit",
+    "description": "A higher-tempo circuit designed to keep your heart rate up and build lean muscle.",
+    "duration_minutes": 20,
+    "category": "fat_loss",
+    "difficulty": "intermediate",
+    "equipment": ["dumbbells"],
+    "exercise_ids": ["goblet-squat", "bent-over-row", "incline-pushup", "romanian-deadlift", "forearm-plank", "squat-to-press"],
+    "image_emoji": "⚡"
+  },
+  {
+    "id": "20min-beginner-intro",
+    "name": "20-Min Beginner Starter",
+    "description": "Perfect for your first workout — simple movements with clear coaching cues.",
+    "duration_minutes": 20,
+    "category": "beginner",
+    "difficulty": "beginner",
+    "equipment": [],
+    "exercise_ids": ["bodyweight-squat", "wall-pushup", "hip-hinge", "forearm-plank", "single-leg-stand", "cat-cow"],
+    "image_emoji": "🌟"
+  },
+  {
+    "id": "20min-post-pregnancy",
+    "name": "20-Min Post-Pregnancy Rebuild",
+    "description": "Gentle core and full-body exercises focused on rebuilding strength after pregnancy.",
+    "duration_minutes": 20,
+    "category": "post_pregnancy",
+    "difficulty": "beginner",
+    "equipment": [],
+    "exercise_ids": ["glute-bridge", "dead-bug", "bird-dog", "wall-pushup", "calf-raise", "cat-cow"],
+    "image_emoji": "🤱"
+  },
+  {
+    "id": "20min-bone-health",
+    "name": "20-Min Bone Health Strength",
+    "description": "Exercises chosen specifically to load the hips, spine, and wrists for bone health support.",
+    "duration_minutes": 20,
+    "category": "bone_health_support",
+    "difficulty": "beginner",
+    "equipment": ["dumbbells"],
+    "exercise_ids": ["goblet-squat", "incline-pushup", "bent-over-row", "glute-bridge", "farmer-carry", "calf-raise"],
+    "image_emoji": "💪"
+  },
+  {
+    "id": "20min-mobility",
+    "name": "20-Min Mobility Flow",
+    "description": "Improve your range of motion and reduce stiffness with targeted mobility work.",
+    "duration_minutes": 20,
+    "category": "mobility",
+    "difficulty": "beginner",
+    "equipment": ["resistance_band"],
+    "exercise_ids": ["cat-cow", "world-greatest-stretch", "hip-circles", "thoracic-rotation", "shoulder-passthrough", "ankle-circles"],
+    "image_emoji": "🧘"
+  },
+  {
+    "id": "30min-upper-body-gym",
+    "name": "30-Min Upper Body Gym",
+    "description": "Build upper body strength with dumbbells and a bench.",
+    "duration_minutes": 30,
+    "category": "gym",
+    "difficulty": "intermediate",
+    "equipment": ["dumbbells", "bench"],
+    "exercise_ids": ["dumbbell-chest-press", "single-arm-row", "overhead-press", "reverse-fly", "tricep-dip", "bicep-curl"],
+    "image_emoji": "🏋️"
+  },
+  {
+    "id": "30min-lower-body-gym",
+    "name": "30-Min Lower Body Gym",
+    "description": "Sculpt and strengthen your legs and glutes with this gym workout.",
+    "duration_minutes": 30,
+    "category": "gym",
+    "difficulty": "intermediate",
+    "equipment": ["dumbbells", "bench", "kettlebell"],
+    "exercise_ids": ["goblet-squat", "romanian-deadlift", "split-squat", "step-up", "single-leg-bridge", "lateral-band-walk"],
+    "image_emoji": "🦵"
+  },
+  {
+    "id": "30min-full-body-home-db",
+    "name": "30-Min Full Body with Dumbbells",
+    "description": "A complete full-body workout using just a pair of dumbbells at home.",
+    "duration_minutes": 30,
+    "category": "home",
+    "difficulty": "intermediate",
+    "equipment": ["dumbbells"],
+    "exercise_ids": ["goblet-squat", "bent-over-row", "overhead-press", "romanian-deadlift", "farmer-carry", "pallof-press", "lateral-raise"],
+    "image_emoji": "🏠"
+  },
+  {
+    "id": "30min-fat-loss-circuit",
+    "name": "30-Min Fat Loss Power Circuit",
+    "description": "An extended circuit with minimal rest to maximize calorie burn and build endurance.",
+    "duration_minutes": 30,
+    "category": "fat_loss",
+    "difficulty": "intermediate",
+    "equipment": ["dumbbells"],
+    "exercise_ids": ["squat-to-press", "bent-over-row", "reverse-lunge", "floor-pushup", "kettlebell-deadlift", "side-plank", "lateral-band-walk", "farmer-carry"],
+    "image_emoji": "🔥"
+  },
+  {
+    "id": "30min-beginner-full",
+    "name": "30-Min Beginner Full Body",
+    "description": "A longer beginner workout that covers all movement patterns at a comfortable pace.",
+    "duration_minutes": 30,
+    "category": "beginner",
+    "difficulty": "beginner",
+    "equipment": [],
+    "exercise_ids": ["bodyweight-squat", "wall-pushup", "hip-hinge", "glute-bridge", "dead-bug", "single-leg-stand", "cat-cow", "calf-raise"],
+    "image_emoji": "🌟"
+  },
+  {
+    "id": "30min-low-impact-strength",
+    "name": "30-Min Low-Impact Strength",
+    "description": "Build strength without jumping or high-impact movements. Joint-friendly throughout.",
+    "duration_minutes": 30,
+    "category": "low_impact",
+    "difficulty": "intermediate",
+    "equipment": ["dumbbells", "resistance_band"],
+    "exercise_ids": ["goblet-squat", "single-arm-row", "glute-bridge", "overhead-press", "pallof-press", "lateral-band-walk", "band-pull-apart"],
+    "image_emoji": "🌿"
+  },
+  {
+    "id": "30min-post-pregnancy-strength",
+    "name": "30-Min Post-Pregnancy Strength",
+    "description": "Rebuilding core and full-body strength with gentle progression. Always check with your healthcare provider first.",
+    "duration_minutes": 30,
+    "category": "post_pregnancy",
+    "difficulty": "beginner",
+    "equipment": ["resistance_band"],
+    "exercise_ids": ["glute-bridge", "dead-bug", "bird-dog", "wall-pushup", "bodyweight-squat", "band-pull-apart", "cat-cow", "forearm-plank"],
+    "image_emoji": "🤱"
+  }
+]
