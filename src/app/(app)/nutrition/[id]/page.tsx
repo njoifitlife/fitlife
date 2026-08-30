@@ -3,6 +3,7 @@ import { ChevronLeft, UtensilsCrossed, Leaf, AlertTriangle } from "lucide-react"
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { getMealById, getAllMeals } from "@/lib/content";
+import { FoodHeroBanner } from "@/components/food-illustration";
 
 export async function generateStaticParams() {
   const meals = await getAllMeals();
@@ -27,6 +28,8 @@ export default async function MealDetailPage({
         <ChevronLeft className="h-4 w-4" />
         Back to Meal Plan
       </Link>
+
+      <FoodHeroBanner mealId={meal.id} mealType={meal.meal_type} />
 
       <div className="mb-6">
         <h1 className="text-2xl font-bold">{meal.name}</h1>

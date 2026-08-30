@@ -1,16 +1,11 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Apple, ChevronRight, UtensilsCrossed, Coffee, Cookie } from "lucide-react";
+import { Apple, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { getMealById } from "@/lib/content";
+import { FoodIllustration } from "@/components/food-illustration";
 import type { Meal, NutritionPlan } from "@/lib/types";
-
-const MEAL_TYPE_ICONS: Record<string, typeof Coffee> = {
-  breakfast: Coffee,
-  lunch_dinner: UtensilsCrossed,
-  snack: Cookie,
-};
 
 const MEAL_TYPE_LABELS: Record<string, string> = {
   breakfast: "Breakfast",
@@ -110,9 +105,7 @@ export default async function NutritionPage() {
                     >
                       <Card className="hover:shadow-md transition-shadow">
                         <CardContent className="flex items-center gap-3 py-3">
-                          <div className="h-9 w-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0">
-                            <Icon className="h-4 w-4" />
-                          </div>
+                          <FoodIllustration mealId={meal.id} mealType={meal.meal_type} size="sm" />
                           <div className="flex-1 min-w-0">
                             <p className="font-medium text-sm truncate">
                               {meal.name}
