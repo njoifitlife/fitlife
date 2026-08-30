@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dumbbell, Apple, Bone, TrendingUp, ChevronRight, Trophy, Users, Settings } from "lucide-react";
+import { GeneratePlanButton } from "@/components/generate-plan-button";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -85,11 +86,7 @@ export default async function DashboardPage() {
           Based on your assessment, we&apos;ll create a personalized 4-week
           workout and nutrition plan.
         </p>
-        <Link href="/dashboard">
-          <Button size="lg" className="w-full">
-            Generate my plan
-          </Button>
-        </Link>
+        <GeneratePlanButton />
       </div>
     );
   }
