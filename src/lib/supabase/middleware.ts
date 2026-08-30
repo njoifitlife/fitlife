@@ -40,7 +40,6 @@ export async function updateSession(request: NextRequest) {
     path.startsWith("/bone-health") ||
     path.startsWith("/progress") ||
     path.startsWith("/settings") ||
-    path.startsWith("/pricing") ||
     path.startsWith("/admin");
 
   if (!user && isAppRoute) {
