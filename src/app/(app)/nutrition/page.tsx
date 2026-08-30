@@ -97,7 +97,6 @@ export default async function NutritionPage() {
               </h2>
               <div className="space-y-2">
                 {meals.map((meal) => {
-                  const Icon = MEAL_TYPE_ICONS[meal.meal_type] || Apple;
                   return (
                     <Link
                       key={`${dayKey}-${meal.id}`}
