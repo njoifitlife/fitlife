@@ -162,7 +162,7 @@ export default function LandingPage() {
             One membership. Full access.
           </h2>
           <p className="text-muted-foreground mb-2 max-w-md mx-auto">
-            $14.99/month or $119/year (best value).
+            $14.99/month or $114/year (best value).
           </p>
           <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
             Same features, same support — choose the billing that works for you.

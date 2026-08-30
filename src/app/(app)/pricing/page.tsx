@@ -57,10 +57,10 @@ export default function PricingPage() {
           <CardHeader className="text-center pb-2">
             <CardTitle className="text-lg">Annual</CardTitle>
             <CardDescription>
-              <span className="text-3xl font-bold text-foreground">$119</span>
+              <span className="text-3xl font-bold text-foreground">$114</span>
               <span className="text-muted-foreground">/year</span>
               <span className="block text-xs text-primary mt-1">
-                Save over $60 vs. monthly
+                Save over $65 vs. monthly
               </span>
             </CardDescription>
           </CardHeader>
