@@ -22,7 +22,12 @@ function getTodayDayNumber() {
   return jsDay === 0 ? 7 : jsDay;
 }
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ notice?: string }>;
+}) {
+  const { notice } = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -148,6 +153,19 @@ export default async function DashboardPage() {
           Week {plan.current_week} of {plan.program_length_weeks}
         </p>
       </div>
+
+      {notice === "nutrition_skipped" && (
+        <Card className="mb-4 border-accent/30 bg-accent/5">
+          <CardContent className="py-4">
+            <p className="text-sm text-foreground">
+              Your workout plan is ready! Nutrition suggestions were not
+              generated because not enough meals matched your dietary
+              preferences. You can update your assessment to broaden your
+              options.
+            </p>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Daily Motivation */}
       <Card className="mb-4 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/10">

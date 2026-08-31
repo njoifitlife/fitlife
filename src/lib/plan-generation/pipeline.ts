@@ -64,5 +64,9 @@ export async function generateFullPlan(
     if (nutritionError) return { error: nutritionError.message };
   }
 
-  return { success: true, planId: plan.id };
+  return {
+    success: true,
+    planId: plan.id,
+    nutritionSkipped: eligibleMeals.length < 3,
+  };
 }

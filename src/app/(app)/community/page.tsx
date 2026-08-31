@@ -67,7 +67,7 @@ export default async function CommunityPage({
 
   let query = supabase
     .from("community_posts")
-    .select("*, users!inner(display_name, email)")
+    .select("*, user_profiles!inner(display_name)")
     .order("created_at", { ascending: false })
     .limit(30);
 
@@ -147,10 +147,8 @@ export default async function CommunityPage({
         )}
         {(posts || []).map((post) => {
           const Icon = TYPE_ICONS[post.post_type as PostType] || Sparkles;
-          const author = post.users as { display_name: string | null; email: string };
-          const authorName =
-            author.display_name ||
-            author.email.split("@")[0].slice(0, 8) + ".";
+          const author = post.user_profiles as { display_name: string | null };
+          const authorName = author?.display_name || "Member";
 
           return (
             <Card key={post.id}>

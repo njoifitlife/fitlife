@@ -6,16 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { signIn } from "@/lib/actions/auth";
+import { updatePassword } from "@/lib/actions/auth";
 
-export default function LoginPage() {
+export default function ResetPasswordPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(formData: FormData) {
     setLoading(true);
     setError(null);
-    const result = await signIn(formData);
+    const result = await updatePassword(formData);
     if (result?.error) {
       setError(result.error);
       setLoading(false);
@@ -32,52 +32,42 @@ export default function LoginPage() {
         </div>
         <Card>
           <CardHeader>
-            <CardTitle>Welcome back</CardTitle>
+            <CardTitle>Set a new password</CardTitle>
             <CardDescription>
-              Log in to continue your fitness journey.
+              Enter your new password below.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form action={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  required
-                  autoComplete="email"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">New password</Label>
                 <Input
                   id="password"
                   name="password"
                   type="password"
                   required
-                  autoComplete="current-password"
+                  minLength={6}
+                  autoComplete="new-password"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="confirm_password">Confirm password</Label>
+                <Input
+                  id="confirm_password"
+                  name="confirm_password"
+                  type="password"
+                  required
+                  minLength={6}
+                  autoComplete="new-password"
                 />
               </div>
               {error && (
                 <p className="text-sm text-destructive">{error}</p>
               )}
-              <div className="text-right">
-                <Link href="/forgot-password" className="text-xs text-muted-foreground hover:text-primary hover:underline">
-                  Forgot password?
-                </Link>
-              </div>
               <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? "Logging in..." : "Log in"}
+                {loading ? "Updating..." : "Update password"}
               </Button>
             </form>
-            <p className="text-sm text-muted-foreground text-center mt-6">
-              Don&apos;t have an account?{" "}
-              <Link href="/signup" className="text-primary font-medium hover:underline">
-                Sign up
-              </Link>
-            </p>
           </CardContent>
         </Card>
       </div>

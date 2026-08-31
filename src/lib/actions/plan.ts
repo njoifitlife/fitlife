@@ -39,5 +39,9 @@ export async function generatePlan() {
     return { error: result.error };
   }
 
+  if (result.nutritionSkipped) {
+    redirect("/dashboard?notice=nutrition_skipped");
+  }
+
   redirect("/dashboard");
 }

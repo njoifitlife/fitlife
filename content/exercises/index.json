@@ -8,6 +8,6 @@
     "balance_functional.json",
     "mobility.json"
   ],
-  "total_exercises": 40,
+  "total_exercises": 45,
   "movement_patterns": ["push", "pull", "squat", "hinge", "core", "balance_functional", "mobility"]
 }

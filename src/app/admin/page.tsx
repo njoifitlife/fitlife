@@ -3,6 +3,22 @@ import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ShieldCheck } from "lucide-react";
 
+type AdminUser = {
+  id: string;
+  email: string;
+  display_name: string | null;
+  created_at: string;
+};
+
+type AdminSubscription = {
+  user_id: string;
+  status: string;
+  stripe_price_id: string;
+  current_period_end: string;
+  cancel_at_period_end: boolean;
+  created_at: string;
+};
+
 export default async function AdminPage() {
   const supabase = await createClient();
   const {
@@ -18,21 +34,14 @@ export default async function AdminPage() {
 
   if (!profile?.is_admin) redirect("/dashboard");
 
-  const { data: users } = await supabase
-    .from("users")
-    .select("id, email, display_name, created_at")
-    .order("created_at", { ascending: false })
-    .limit(50);
+  const { data: usersData } = await supabase.rpc("get_admin_users");
+  const users = (usersData || []) as AdminUser[];
 
-  const userIds = (users || []).map((u) => u.id);
-
-  const { data: subscriptions } = await supabase
-    .from("subscriptions")
-    .select("user_id, status, stripe_price_id, current_period_end, cancel_at_period_end, created_at")
-    .in("user_id", userIds.length > 0 ? userIds : ["__none__"]);
+  const { data: subsData } = await supabase.rpc("get_admin_subscriptions");
+  const subscriptions = (subsData || []) as AdminSubscription[];
 
   const subByUser = new Map(
-    (subscriptions || []).map((s) => [s.user_id, s])
+    subscriptions.map((s) => [s.user_id, s])
   );
 
   const monthlyPriceId = process.env.STRIPE_MONTHLY_PRICE_ID || "";
@@ -46,7 +55,7 @@ export default async function AdminPage() {
 
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-base">Members ({users?.length || 0})</CardTitle>
+          <CardTitle className="text-base">Members ({users.length})</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -62,7 +71,7 @@ export default async function AdminPage() {
                 </tr>
               </thead>
               <tbody>
-                {(users || []).map((u) => {
+                {users.map((u) => {
                   const sub = subByUser.get(u.id);
                   const billingLabel = sub
                     ? sub.stripe_price_id === monthlyPriceId

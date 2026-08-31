@@ -116,9 +116,11 @@ export default async function WorkoutDetailPage({
         ))}
       </div>
 
-      <Button className="w-full" size="lg">
-        Start Workout
-      </Button>
+      <Link href="/workouts/my-plan">
+        <Button className="w-full" size="lg">
+          Start Workout
+        </Button>
+      </Link>
     </div>
   );
 }
